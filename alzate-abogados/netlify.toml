@@ -1,0 +1,12 @@
+# Netlify compila el sitio desde GitHub cada vez que alguien guarda un cambio en el panel (/admin).
+[build]
+  command = "node build.mjs"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # Modo del sitio:
+  #   "preview"    = sin avisos de borrador, NO aparece en Google (para mostrar al cliente).
+  #   "production" = sitio final, indexable. Exige: WhatsApp, dirección del sitio (dominio),
+  #                  política de datos validada y contenido jurídico aprobado (se marcan en el panel).
+  ALZATE_MODE = "preview"

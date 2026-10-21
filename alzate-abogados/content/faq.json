@@ -1,0 +1,62 @@
+{
+  "items": [
+    {
+      "q": "¿Qué tipo de asuntos jurídicos atiende Álzate - Abogados?",
+      "a": [
+        "La firma se enfoca principalmente en derecho de familia (divorcios, unión marital de hecho, liquidación de sociedad conyugal y patrimonial, custodia, alimentos, paternidad y sucesiones) y en derecho civil. También ofrece asesoría relacionada con sociedades comerciales.",
+        "Si su situación no aparece en la lista, puede escribir y consultar si es un asunto en el que el abogado pueda orientarle."
+      ]
+    },
+    {
+      "q": "¿Atiende solo en Bogotá o también en otras ciudades?",
+      "a": [
+        "El abogado trabaja principalmente en Bogotá y atiende asuntos de personas de todo el país. La forma de atención (presencial o a distancia) se acuerda directamente al iniciar la conversación."
+      ]
+    },
+    {
+      "q": "¿Cómo puedo solicitar una consulta?",
+      "a": [
+        "El medio principal es WhatsApp: puede escribir al abogado con un mensaje breve contándole de manera general qué necesita. Los botones de esta página abren la conversación con un mensaje inicial ya preparado."
+      ]
+    },
+    {
+      "q": "¿Qué información debo preparar antes de conversar con el abogado?",
+      "a": [
+        "Le servirá tener claro un resumen breve de su situación, las fechas y personas relevantes y los documentos que tenga a la mano. No es necesario enviar documentos, datos de identidad ni detalles privados en el primer mensaje: el abogado le indicará qué información necesita y cómo entregarla."
+      ]
+    },
+    {
+      "q": "¿Cómo funciona la asesoría personalizada?",
+      "a": [
+        "La propuesta de Álzate - Abogados es priorizar la comunicación directa con el abogado y comprender las particularidades de cada situación antes de proponer un camino. Tras conocer su consulta, el abogado le informa las alternativas aplicables, el alcance del servicio y las condiciones.",
+        "El contacto inicial no implica aceptación del caso, representación legal ni garantía de resultados."
+      ]
+    },
+    {
+      "q": "¿Cuáles son los pasos iniciales para consultar sobre un divorcio?",
+      "a": [
+        "De manera general: comunicarse con el abogado y explicarle brevemente su situación; conversar sobre aspectos como la existencia de hijos menores, de bienes en común y del grado de acuerdo entre las partes; y, con esa información, conocer las alternativas y los pasos que podrían corresponder.",
+        "El camino concreto depende de las circunstancias de cada caso, por lo que esta respuesta es solo informativa."
+      ]
+    },
+    {
+      "q": "¿Qué diferencia existe entre una sociedad conyugal y una sociedad patrimonial?",
+      "a": [
+        "En términos generales, la sociedad conyugal se relaciona con los bienes de las personas que contrajeron matrimonio, mientras que la sociedad patrimonial se relaciona con los bienes de compañeros permanentes que han convivido en unión marital de hecho.",
+        "Los requisitos, la forma de liquidarlas y sus efectos dependen de cada situación; por eso conviene consultarlo con el abogado antes de tomar decisiones."
+      ]
+    },
+    {
+      "q": "¿Cómo puedo consultar sobre custodia o cuota de alimentos?",
+      "a": [
+        "Puede escribir por WhatsApp indicando que su consulta es sobre custodia y cuidado personal de los hijos o sobre cuota de alimentos. Con una descripción general de la situación, el abogado podrá orientarle sobre cómo continuar."
+      ]
+    },
+    {
+      "q": "¿Cuánto cuesta una asesoría jurídica?",
+      "a": [
+        "Por ahora no se publican tarifas. Las condiciones de la asesoría se informan directamente por el abogado, después de conocer el asunto y su alcance."
+      ]
+    }
+  ]
+}

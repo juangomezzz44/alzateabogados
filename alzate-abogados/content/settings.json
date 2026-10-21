@@ -1,0 +1,29 @@
+{
+  "contact": {
+    "whatsappNumber": "573168303567",
+    "email": "",
+    "city": "Bogotá, Colombia",
+    "coverage": "Atención desde Bogotá para todo el país",
+    "address": "",
+    "hours": "",
+    "modality": ""
+  },
+  "profile": {
+    "bio": "",
+    "professionalCard": "",
+    "showCredentialsFromPhoto": true
+  },
+  "privacy": {
+    "responsible": "Gilberto Álzate (Álzate - Abogados)",
+    "contactChannel": "gilbertoalzate@hotmail.com",
+    "lastUpdated": "12 de octubre de 2026",
+    "validatedByLawyer": false
+  },
+  "site": {
+    "url": ""
+  },
+  "content": {
+    "sucesiones": "familia",
+    "legalReviewDone": false
+  }
+}

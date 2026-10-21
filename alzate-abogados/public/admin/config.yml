@@ -1,0 +1,202 @@
+# =====================================================================
+#  PANEL DE ADMINISTRACIÓN — Álzate - Abogados  (Decap CMS)
+#  Los cambios se guardan en el repositorio de GitHub y Netlify
+#  vuelve a publicar el sitio solo (1–2 minutos).
+# =====================================================================
+
+# ---------- 1) FORMA DE ENTRAR (elegir UNA; ver GUIA-ADMIN.md) ----------
+
+# OPCIÓN A (activa por defecto): GitHub vía Netlify.
+#   Quien edite necesita una cuenta de GitHub con acceso al repositorio.
+#   Reemplace USUARIO/REPOSITORIO por el repositorio real (ej.: mi-usuario/alzate-abogados).
+backend:
+  name: github
+  repo: USUARIO/REPOSITORIO
+  branch: main
+
+# OPCIÓN B: Decap Turbo (correo y contraseña, sin cuenta de GitHub para editar).
+#   Comente el bloque anterior, descomente este y pegue el "Site ID" de Turbo.
+# backend:
+#   name: turbo-github
+#   turbo_site_id: PEGAR_AQUI_EL_SITE_ID
+#   branch: main
+
+# Para probar en el computador (sin iniciar sesión): quite el # de la línea siguiente
+# y ejecute en otra terminal:  npx decap-server
+# local_backend: true
+
+locale: es
+publish_mode: simple
+# Nombres de archivo/URL sin tildes ni caracteres raros (ej.: "Qué es un divorcio" → que-es-un-divorcio)
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+media_folder: public/assets/uploads
+public_folder: /assets/uploads
+site_url: /
+display_url: /
+logo_url: /assets/img/logo-mark-green.png
+
+collections:
+  # ------------------------------------------------------------------
+  - name: articulos
+    label: Artículos jurídicos
+    label_singular: Artículo
+    folder: content/articulos
+    extension: md
+    format: frontmatter
+    create: true
+    editor: { preview: false }
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    sortable_fields: [date, title, published]
+    description: >-
+      Un artículo SOLO aparece en el sitio si "Publicar en el sitio" está activado, tiene fecha y tiene texto.
+      Mientras esté desactivado queda como borrador y nadie puede verlo. Verifique las normas en fuentes oficiales antes de publicar.
+    fields:
+      - { name: title, label: Título, widget: string }
+      - name: description
+        label: Resumen para Google y para compartir
+        widget: text
+        hint: "Una o dos frases (máximo ~160 caracteres) que expliquen de qué trata."
+      - name: date
+        label: Fecha de publicación
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD/MM/YYYY"
+        time_format: false
+        required: false
+        default: "{{now}}"
+        hint: "Obligatoria para publicar. Se llena sola con la fecha de hoy; cámbiela si el artículo corresponde a otra fecha real."
+      - name: published
+        label: Publicar en el sitio
+        widget: boolean
+        default: false
+        hint: "Desactivado = borrador (no se ve en el sitio). Actívelo solo cuando el artículo esté revisado."
+      - name: comingSoon
+        label: Mostrar como "Próximamente" (solo si NO está publicado)
+        widget: boolean
+        default: false
+        required: false
+        hint: "Muestra el título en la lista sin abrir el artículo."
+      - name: topic
+        label: Tema para el mensaje de WhatsApp
+        widget: string
+        required: false
+        hint: "Completa la frase 'Quisiera recibir información sobre ...'. Ej.: un divorcio. No incluya datos personales."
+      - { name: outline, label: Esquema, widget: hidden, required: false }
+      - name: body
+        label: Texto del artículo
+        widget: markdown
+        required: false
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: [image]
+        hint: "Use 'Título 2' para las secciones. No pegue contenido sin verificarlo."
+
+  # ------------------------------------------------------------------
+  - name: sitio
+    label: Datos del sitio
+    editor: { preview: false }
+    files:
+      - name: contacto
+        label: Contacto, perfil y datos legales
+        file: content/settings.json
+        format: json
+        fields:
+          - label: Contacto
+            name: contact
+            widget: object
+            collapsed: false
+            fields:
+              - name: whatsappNumber
+                label: Número de WhatsApp
+                widget: string
+                hint: "Escriba 57 + los 10 dígitos, sin espacios ni signos. Ej.: 573001234567. Si queda mal, el sitio no se actualiza."
+                pattern: ['^57\d{10}$', "Debe empezar por 57 y tener 12 dígitos en total, sin espacios ni signos"]
+              - { name: email, label: Correo de contacto, widget: string, required: false }
+              - { name: city, label: Ciudad, widget: string, required: false }
+              - { name: coverage, label: Cobertura (frase del pie de página), widget: string, required: false }
+              - { name: address, label: Dirección, widget: string, required: false }
+              - { name: hours, label: Horarios, widget: string, required: false }
+              - { name: modality, label: Modalidad de atención, widget: string, required: false, hint: "Ej.: presencial y virtual. Aún no se muestra en el sitio." }
+          - label: Perfil del abogado
+            name: profile
+            widget: object
+            fields:
+              - { name: bio, label: Biografía, widget: text, required: false, hint: "Solo datos verificados." }
+              - { name: professionalCard, label: Tarjeta profesional, widget: string, required: false }
+              - { name: showCredentialsFromPhoto, label: Mostrar la formación que aparece en los diplomas de la foto, widget: boolean, default: true }
+          - label: Tratamiento de datos personales
+            name: privacy
+            widget: object
+            fields:
+              - { name: responsible, label: Responsable del tratamiento, widget: string, required: false }
+              - { name: contactChannel, label: Correo para consultas y solicitudes de eliminación, widget: string, required: false }
+              - { name: lastUpdated, label: Fecha de la última actualización de la política, widget: string, required: false, hint: "Ej.: 20 de octubre de 2026" }
+              - { name: validatedByLawyer, label: El abogado validó esta política, widget: boolean, default: false }
+          - label: Publicación
+            name: site
+            widget: object
+            fields:
+              - { name: url, label: Dirección del sitio (dominio), widget: string, required: false, hint: "Ej.: https://www.dominio.com  (sin barra al final)" }
+          - label: Contenido jurídico
+            name: content
+            widget: object
+            fields:
+              - name: sucesiones
+                label: Dónde mostrar "Sucesiones"
+                widget: select
+                options:
+                  - { label: Dentro de Derecho de familia, value: familia }
+                  - { label: Como área independiente, value: propia }
+                default: familia
+              - { name: legalReviewDone, label: El abogado aprobó las preguntas frecuentes y los textos de servicios, widget: boolean, default: false }
+
+      - name: servicios
+        label: Servicios
+        file: content/servicios.json
+        format: json
+        fields:
+          - label: Derecho de familia (servicios)
+            name: familia
+            widget: list
+            summary: "{{fields.name}}"
+            fields: &servicio
+              - { name: name, label: Nombre del servicio, widget: string }
+              - { name: text, label: Explicación breve y general, widget: text }
+              - { name: asunto, label: "Frase para el mensaje de WhatsApp (ej.: un divorcio)", widget: string, required: false }
+              - name: icon
+                label: Ícono
+                widget: select
+                default: document
+                options:
+                  - { label: Anillos, value: rings }
+                  - { label: Enlace, value: link }
+                  - { label: Edificio con frontón, value: scale-balance }
+                  - { label: Casa, value: home }
+                  - { label: Niño o niña, value: child }
+                  - { label: Monedas, value: coins }
+                  - { label: Persona con lupa, value: search-person }
+                  - { label: Documento, value: document }
+                  - { label: Libro, value: book }
+                  - { label: Edificio de oficinas, value: building }
+              - { name: slug, label: Identificador interno, widget: hidden, required: false }
+          - { label: Derecho civil, name: civil, widget: object, fields: *servicio }
+          - { label: Sociedades comerciales, name: comercial, widget: object, fields: *servicio }
+
+      - name: faq
+        label: Preguntas frecuentes
+        file: content/faq.json
+        format: json
+        fields:
+          - label: Preguntas
+            name: items
+            widget: list
+            summary: "{{fields.q}}"
+            fields:
+              - { name: q, label: Pregunta, widget: string }
+              - label: Respuesta (un párrafo por casilla)
+                name: a
+                widget: list
+                field: { label: Párrafo, name: parrafo, widget: text }

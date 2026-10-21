@@ -1,0 +1,72 @@
+{
+  "familia": [
+    {
+      "slug": "divorcios",
+      "icon": "rings",
+      "name": "Divorcios",
+      "asunto": "un divorcio",
+      "text": "Orientación para quienes están considerando poner fin al matrimonio y desean conocer las alternativas y los pasos generales que conviene tener en cuenta."
+    },
+    {
+      "slug": "union-marital-de-hecho",
+      "icon": "link",
+      "name": "Declaración de unión marital de hecho",
+      "asunto": "la declaración de una unión marital de hecho",
+      "text": "Pensada para parejas que han convivido como compañeros permanentes y necesitan aclarar o formalizar el reconocimiento de su unión."
+    },
+    {
+      "slug": "liquidacion-sociedad-conyugal",
+      "icon": "scale-balance",
+      "name": "Liquidación de sociedad conyugal",
+      "asunto": "la liquidación de una sociedad conyugal",
+      "text": "Puede ser pertinente cuando existe o existió un matrimonio y hay que definir la situación de los bienes de la pareja."
+    },
+    {
+      "slug": "liquidacion-sociedad-patrimonial",
+      "icon": "home",
+      "name": "Liquidación de sociedad patrimonial",
+      "asunto": "la liquidación de una sociedad patrimonial entre compañeros permanentes",
+      "text": "Relacionada con los bienes de los compañeros permanentes cuando la unión marital termina o ha sido declarada."
+    },
+    {
+      "slug": "custodia-y-cuidado-personal",
+      "icon": "child",
+      "name": "Custodia y cuidado personal de los hijos",
+      "asunto": "la custodia y el cuidado personal de mis hijos",
+      "text": "Orientación sobre cómo se organiza el cuidado y la convivencia con los hijos menores cuando los padres se separan."
+    },
+    {
+      "slug": "cuota-de-alimentos",
+      "icon": "coins",
+      "name": "Cuota de alimentos",
+      "asunto": "una cuota de alimentos",
+      "text": "Consulta sobre la fijación, el ajuste o el cumplimiento de la obligación alimentaria en favor de los hijos u otros beneficiarios."
+    },
+    {
+      "slug": "investigacion-paternidad",
+      "icon": "search-person",
+      "name": "Investigación y declaración judicial de paternidad",
+      "asunto": "la investigación o declaración judicial de paternidad",
+      "text": "Para quienes necesitan orientación sobre el reconocimiento de la filiación cuando este no se ha dado de manera voluntaria."
+    },
+    {
+      "slug": "sucesiones",
+      "icon": "document",
+      "name": "Sucesiones",
+      "asunto": "una sucesión",
+      "text": "Orientación general sobre la situación de los bienes y derechos de una persona fallecida y los primeros pasos para su trámite."
+    }
+  ],
+  "civil": {
+    "icon": "book",
+    "name": "Derecho civil",
+    "asunto": "un asunto de derecho civil",
+    "text": "El derecho civil reúne asuntos patrimoniales y personales de la vida cotidiana. Si su situación es de esta naturaleza, cuéntenos de manera general de qué se trata y conozca si podemos orientarle."
+  },
+  "comercial": {
+    "icon": "building",
+    "name": "Sociedades comerciales",
+    "asunto": "asesoría jurídica relacionada con sociedades comerciales",
+    "text": "Asesoría jurídica en asuntos relacionados con sociedades comerciales. El alcance de la asesoría se define directamente con el abogado, según cada caso."
+  }
+}
