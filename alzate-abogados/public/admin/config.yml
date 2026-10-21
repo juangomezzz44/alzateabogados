@@ -27,7 +27,8 @@
 
 # locale: es
 # publish_mode: simple
-# Nombres de archivo/URL sin tildes ni caracteres raros (ej.: "Qué es un divorcio" → que-es-un-divorcio)
+# Nombres de archivo y URLs: usar solo letras simples, sin tildes ni caracteres raros.
+# Ejemplo: "Que es un divorcio" se convierte en "que-es-un-divorcio"
 slug:
   encoding: ascii
   clean_accents: true
