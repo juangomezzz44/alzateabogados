@@ -25,8 +25,8 @@
 # y ejecute en otra terminal:  npx decap-server
 # local_backend: true
 
-locale: es
-publish_mode: simple
+# locale: es
+# publish_mode: simple
 # Nombres de archivo/URL sin tildes ni caracteres raros (ej.: "Qué es un divorcio" → que-es-un-divorcio)
 slug:
   encoding: ascii
