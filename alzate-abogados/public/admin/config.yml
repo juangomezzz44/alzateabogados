@@ -1,4 +1,3 @@
-
 backend:
   name: github
   repo: juangomezzz44/alzateabogados
@@ -27,14 +26,12 @@ collections:
     summary: "{{title}}"
     sortable_fields: [date, title, published]
     description: >-
-      Un artículo SOLO aparece en el sitio si "Publicar enne fecha y tiene texto.
-      Mientras esté desactivado queda como borrador y nadie puede verlo. Verifique las normas en fuentes oficiales antes de publicar.
+      Un artículo SOLO aparece en el sitio si "Publicar en el sitio" está activado, tiene fecha y tiene texto.
     fields:
       - { name: title, label: Título, widget: string }
       - name: description
         label: Resumen para Google y para compartir
         widget: text
-        hint: "Una o dos frases (máximo ~160 caracteres) que expliquen de qué trata."
       - name: date
         label: Fecha de publicación
         widget: datetime
@@ -43,31 +40,26 @@ collections:
         time_format: false
         required: false
         default: "{{now}}"
-        hint: "Obligatoria para publicar. Se llena sola coi el artículo corresponde a otra fecha real."
       - name: published
         label: Publicar en el sitio
         widget: boolean
         default: false
-        hint: "Desactivado = borrador (no se ve en el sitio). Actívelo solo cuando el artículo esté revisado."
       - name: comingSoon
-        label: Mostrar como "Próximamente" (solo si NO está publicado)
+        label: Mostrar como "Próximamente"
         widget: boolean
         default: false
         required: false
-        hint: "Muestra el título en la lista sin abrir el artículo."
       - name: topic
         label: Tema para el mensaje de WhatsApp
         widget: string
         required: false
-        hint: "Completa la frase 'Quisiera recibir informarcio. No incluya datos personales."
       - { name: outline, label: Esquema, widget: hidden, required: false }
       - name: body
         label: Texto del artículo
         widget: markdown
         required: false
-        buttons: [bold, italic, link, heading-two, heading numbered-list]
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
         editor_components: [image]
-        hint: "Use 'Título 2' para las secciones. No pegue
 
   - name: sitio
     label: Datos del sitio
@@ -86,35 +78,33 @@ collections:
               - name: whatsappNumber
                 label: Número de WhatsApp
                 widget: string
-                hint: "Escriba 57 + los 10 dígitos, sin espacios ni signos. Ej.: 573001234567. Si queda mal, el sitio no se actualiza."
-                pattern: ['^57\d{10}$', "Debe empezar por l, sin espacios ni signos"]
+                pattern: ['^57\d{10}$', "Debe empezar por 57 y tener 12 dígitos"]
               - { name: email, label: Correo de contacto, widget: string, required: false }
-              - { name: city, label: Ciudad, widget: strin
-              - { name: coverage, label: Cobertura (frase del pie de página), widget: string, required: false }
-              - { name: address, label: Dirección, widget:
+              - { name: city, label: Ciudad, widget: string, required: false }
+              - { name: coverage, label: Cobertura, widget: string, required: false }
+              - { name: address, label: Dirección, widget: string, required: false }
               - { name: hours, label: Horarios, widget: string, required: false }
-              - { name: modality, label: Modalidad de atend: false, hint: "Ej.: presencial y virtual. Aún no semuestra en el sitio." }
+              - { name: modality, label: Modalidad de atención, widget: string, required: false }
           - label: Perfil del abogado
             name: profile
             widget: object
             fields:
-              - { name: bio, label: Biografía, widget: texlo datos verificados." }
+              - { name: bio, label: Biografía, widget: text, required: false }
               - { name: professionalCard, label: Tarjeta profesional, widget: string, required: false }
-              - { name: showCredentialsFromPhoto, label: Mce en los diplomas de la foto, widget: boolean, default:true }
+              - { name: showCredentialsFromPhoto, label: Mostrar la formación, widget: boolean, default: true }
           - label: Tratamiento de datos personales
             name: privacy
             widget: object
             fields:
-              - { name: responsible, label: Responsable de, required: false }
-              - { name: contactChannel, label: Correo para consultas y solicitudes de eliminación, widget: string, required: false }
-              - { name: lastUpdated, label: Fecha de la últica, widget: string, required: false, hint: "Ej.: 20 deoctubre de 2026" }
-              - { name: validatedByLawyer, label: El abogaet: boolean, default: false }
+              - { name: responsible, label: Responsable del tratamiento, widget: string, required: false }
+              - { name: contactChannel, label: Correo para consultas, widget: string, required: false }
+              - { name: lastUpdated, label: Fecha de actualización, widget: string, required: false }
+              - { name: validatedByLawyer, label: El abogado validó esta política, widget: boolean, default: false }
           - label: Publicación
             name: site
             widget: object
             fields:
-              - { name: url, label: Dirección del sitio (dominio), widget: string, required: false, hint: "Ej.: https://www.dominio.com  (sin
-barra al final)" }
+              - { name: url, label: Dirección del sitio, widget: string, required: false }
           - label: Contenido jurídico
             name: content
             widget: object
@@ -124,9 +114,9 @@ barra al final)" }
                 widget: select
                 options:
                   - { label: Dentro de Derecho de familia, value: familia }
-                  - { label: Como área independiente, valu
+                  - { label: Como área independiente, value: propia }
                 default: familia
-              - { name: legalReviewDone, label: El abogadotes y los textos de servicios, widget: boolean, default:false }
+              - { name: legalReviewDone, label: El abogado aprobó los textos, widget: boolean, default: false }
 
       - name: servicios
         label: Servicios
@@ -139,8 +129,8 @@ barra al final)" }
             summary: "{{fields.name}}"
             fields: &servicio
               - { name: name, label: Nombre del servicio, widget: string }
-              - { name: text, label: Explicación breve y g
-              - { name: asunto, label: "Frase para el mensaje de WhatsApp (ej.: un divorcio)", widget: string, required: false }
+              - { name: text, label: Explicación breve, widget: text }
+              - { name: asunto, label: Frase WhatsApp, widget: string, required: false }
               - name: icon
                 label: Ícono
                 widget: select
@@ -155,9 +145,9 @@ barra al final)" }
                   - { label: Persona con lupa, value: search-person }
                   - { label: Documento, value: document }
                   - { label: Libro, value: book }
-                  - { label: Edificio de oficinas, value:
+                  - { label: Edificio de oficinas, value: building }
               - { name: slug, label: Identificador interno, widget: hidden, required: false }
-          - { label: Derecho civil, name: civil, widget: o
+          - { label: Derecho civil, name: civil, widget: object, fields: *servicio }
           - { label: Sociedades comerciales, name: comercial, widget: object, fields: *servicio }
 
       - name: faq
@@ -171,7 +161,8 @@ barra al final)" }
             summary: "{{fields.q}}"
             fields:
               - { name: q, label: Pregunta, widget: string }
-              - label: Respuesta (un párrafo por casilla)
+              - label: Respuesta
                 name: a
                 widget: list
                 field: { label: Párrafo, name: parrafo, widget: text }
+                
