@@ -20,15 +20,6 @@
    name: turbo-github
    turbo_site_id: a9071068-07ab-416b-91c8-8e4b4710c2db
    branch: main
-
-# Para probar en el computador (sin iniciar sesión): quite el # de la línea siguiente
-# y ejecute en otra terminal:  npx decap-server
-# local_backend: true
-
-# locale: es
-# publish_mode: simple
-# Nombres de archivo y URLs: usar solo letras simples, sin tildes ni caracteres raros.
-# Ejemplo: "Que es un divorcio" se convierte en "que-es-un-divorcio"
 slug:
   encoding: ascii
   clean_accents: true
