@@ -9,17 +9,17 @@
 # OPCIÓN A (activa por defecto): GitHub vía Netlify.
 #   Quien edite necesita una cuenta de GitHub con acceso al repositorio.
 #   Reemplace USUARIO/REPOSITORIO por el repositorio real (ej.: mi-usuario/alzate-abogados).
-backend:
+# backend:
   name: github
   repo: USUARIO/REPOSITORIO
   branch: main
 
 # OPCIÓN B: Decap Turbo (correo y contraseña, sin cuenta de GitHub para editar).
 #   Comente el bloque anterior, descomente este y pegue el "Site ID" de Turbo.
-# backend:
-#   name: turbo-github
-#   turbo_site_id: PEGAR_AQUI_EL_SITE_ID
-#   branch: main
+ backend:
+   name: turbo-github
+   turbo_site_id: a9071068-07ab-416b-91c8-8e4b4710c2db
+   branch: main
 
 # Para probar en el computador (sin iniciar sesión): quite el # de la línea siguiente
 # y ejecute en otra terminal:  npx decap-server
