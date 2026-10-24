@@ -1,7 +1,3 @@
-import { config, waMessages, nav } from '../site.config.mjs';
-import { esc, makeUrl, waLink, waPendingAttr, waNumberValid, isProd, isClean, siteUrl, canonicalFor, pending } from './lib.mjs';
-import { icon, waIcon } from './icons.mjs';
-
 /** Botón/enlace de WhatsApp reutilizable. */
 export function waButton({ message, label, variant = 'primary', extra = '', size = '' }) {
   return `<a class="btn btn--${variant} ${size ? 'btn--' + size : ''} ${extra}" href="${esc(waLink(message))}" data-wa${waPendingAttr()}${waNumberValid ? ' target="_blank" rel="noopener noreferrer"' : ''}>${waIcon(20)}<span>${esc(label)}</span></a>`;
