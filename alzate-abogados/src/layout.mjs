@@ -31,24 +31,9 @@ export function head({ depth, title, description, path, noindex = false, ld = nu
   const ogImage = siteUrl ? `${siteUrl}/assets/img/og-image.jpg` : null;
   const robots = noindex || !isProd ? 'noindex, nofollow' : 'index, follow';
 
-  return `<!doctype html>
-<html lang="${config.site.lang}">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)}</title>
-<meta name="description" content="${esc(description)}">
-<meta name="robots" content="${robots}">
-<meta name="theme-color" content="${config.brand.colors.green}">
-${canonical ? `<link rel="canonical" href="${esc(canonical)}">` : ''}
-<meta property="og:locale" content="es_CO">
-<meta property="og:type" content="${ogType}">
-<meta property="og:site_name" content="${esc(config.brand.name)}">
-<meta property="og:title" content="${esc(title)}">
-<meta property="og:description" content="${esc(description)}">
-${canonical ? `<meta property="og:url" content="${esc(//Sustituido para evitar errores de sintaxis
-  const canonical_url = canonical ? `<meta property="og:url" content="${esc(canonical)}">` : '';
-  const og_image = ogImage ? `<meta property="og:image" content="${esc(ogImage)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Logo de Álzate - Abogados y fotografía del abogado Gilberto Álzate">` : '';
+  const canonicalTag = canonical ? `<link rel="canonical" href="${esc(canonical)}">` : '';
+  const ogUrlTag = canonical ? `<meta property="og:url" content="${esc(canonical)}">` : '';
+  const ogImageTag = ogImage ? `<meta property="og:image" content="${esc(ogImage)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Logo de Álzate - Abogados y fotografía del abogado Gilberto Álzate">` : '';
 
   return `<!doctype html>
 <html lang="${config.site.lang}">
@@ -59,14 +44,14 @@ ${canonical ? `<meta property="og:url" content="${esc(//Sustituido para evitar e
 <meta name="description" content="${esc(description)}">
 <meta name="robots" content="${robots}">
 <meta name="theme-color" content="${config.brand.colors.green}">
-${canonical ? `<link rel="canonical" href="${esc(canonical)}">` : ''}
+${canonicalTag}
 <meta property="og:locale" content="es_CO">
 <meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="${esc(config.brand.name)}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
-${canonical_url}
-${og_image}
+${ogUrlTag}
+${ogImageTag}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="${u.prefix}favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="${u.prefix}favicon-32.png">
@@ -150,30 +135,8 @@ export function footer({ depth }) {
       <h2 class="footer__title">Información legal</h2>
       <ul class="footer__list">
         <li><a href="${u.page('politica-de-tratamiento-de-datos')}">Política de tratamiento de datos personales</a></li>
-        <li><a href="${u.page('aviso-informativo')}">Aviso sobre el contenido informativo<///Sustituido para evitar errores de sintaxis
-  const avisos_html = `<li><a href="${u.page('politica-de-tratamiento-de-datos')}">Política de tratamiento de datos personales</a></li>
-<li><a href="${u.page('aviso-informativo')}">Aviso sobre el contenido informativo</a></li>`;
-  return `<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer__brand">
-      <img src="${u.asset('img/logo-full-ivory.webp')}" width="260" height="178" alt="Álzate - Abogados" loading="lazy" decoding="async">
-      <p>Derecho de familia y civil.</p>
-    </div>
-    <div>
-      <h2 class="footer__title">Navegación</h2>
-      <ul class="footer__list">${links}</ul>
-    </div>
-    <div id="contacto-datos">
-      <h2 class="footer__title">Contacto</h2>
-      <ul class="footer__list">
-        <li><a href="${esc(waLink(waMessages.general))}" data-wa${waPendingAttr()}${waNumberValid ? ' target="_blank" rel="noopener noreferrer"' : ''}>Escribir por WhatsApp</a></li>
-        ${contactRows}${draftContact}
+        <li><a href="${u.page('aviso-informativo')}">Aviso sobre el contenido informativo</a></li>
       </ul>
-      ${card_text}
-    </div>
-    <div>
-      <h2 class="footer__title">Información legal</h2>
-      <ul class="footer__list">${avisos_html}</ul>
     </div>
   </div>
   <div class="container footer-bottom">
@@ -188,11 +151,7 @@ export function floatingWa({ depth }) {
   const wa_text = `<span class="wa-float__small">Hable directamente con el abogado</span><span class="wa-float__big">Escribir por WhatsApp</span>`;
   return `<a class="wa-float" href="${esc(waLink(waMessages.float))}" data-wa${waPendingAttr()}${waNumberValid ? ' target="_blank" rel="noopener noreferrer"' : ''} aria-label="Escribir por WhatsApp al abogado Gilberto Álzate">
   <img src="${u.asset('img/gilberto-avatar.webp')}" width="44" height="44" alt="" decoding="async" loading="lazy">
-  <span class="//Sustituido para evitar errores de sintaxis
-  const wa_float_content = `<span class="wa-float__text">${wa_text}</span>`;
-  return `<a class="wa-float" href="${esc(waLink(waMessages.float))}" data-wa${waPendingAttr()}${waNumberValid ? ' target="_blank" rel="noopener noreferrer"' : ''} aria-label="Escribir por WhatsApp al abogado Gilberto Álzate">
-  <img src="${u.asset('img/gilberto-avatar.webp')}" width="44" height="44" alt="" decoding="async" loading="lazy">
-  ${wa_float_content}
+  <span class="wa-float__text">${wa_text}</span>
   ${waIcon(22)}
 </a>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>`;
