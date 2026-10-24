@@ -55,6 +55,7 @@ function values() {
     <header class="section__head reveal">
       <p class="eyebrow">Una atención más personal</p>
       <h2 id="valor-title">Más que un trámite, una situación que merece ser comprendida</h2>
+      <span class="ornament reveal"></span>
       <p class="section__lead">En Álzate - Abogados la prioridad es escuchar, comprender las particularidades de cada situación y acompañar con claridad.</p>
     </header>
     <div class="pillars">
@@ -73,22 +74,23 @@ function values() {
 }
 
 function specializedArea() {
-  return `<section class="section section--ivory" id="especialidades" aria-labelledby="espec-title">
+  return `<section class="section section--dark" id="especialidades" aria-labelledby="espec-title">
   <div class="container">
     <header class="section__head reveal">
       <p class="eyebrow">Especialidad destacada</p>
       <h2 id="espec-title">Sucesiones, Fideicomisos Civiles y Herencias</h2>
+      <span class="ornament reveal"></span>
       <p class="section__lead">Proteja el legado familiar con una gestión jurídica rigurosa y humana. Nos especializamos en la organización y liquidación de patrimonios para garantizar la tranquilidad de las próximas generaciones.</p>
     </header>
     <div class="secondary reveal">
       <article class="card card--wide">
-        <span class="card__icon">${icon('scale', { size: 26 })}</span>
+        <span class="card__icon">${icon('scale-balance', { size: 32 })}</span>
         <h3>Sucesiones y Herencias</h3>
         <p>Trámites de liquidación de herencias, ya sean mutuo acuerdo o contenciosas. Aseguramos una distribución justa y legal del patrimonio siguiendo la normativa vigente.</p>
         <a class="card__link" href="${esc(waLink(waMessages.topic('sucesiones')))}" ${waAttrs()} aria-label="Consultar sobre sucesiones">${waIcon(18)}<span>Consultar por WhatsApp</span>${icon('arrow', { size: 16 })}</a>
       </article>
       <article class="card card--wide">
-        <span class="card__icon">${icon('shield', { size: 26 })}</span>
+        <span class="card__icon">${icon('shield', { size: 32 })}</span>
         <h3>Fideicomisos Civiles</h3>
         <p>Creación y administración de fideicomisos para asegurar que los bienes lleguen a los beneficiarios designados bajo las condiciones exactas que usted desea.</p>
         <a class="card__link" href="${esc(waLink(waMessages.topic('fideicomiso')))}" ${waAttrs()} aria-label="Consultar sobre fideicomisos">${waIcon(18)}<span>Consultar por WhatsApp</span>${icon('arrow', { size: 16 })}</a>
