@@ -55,7 +55,7 @@ ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}"><meta property=
 <link rel="apple-touch-icon" href="${u.asset('img/apple-touch-icon.png')}">
 <link rel="preload" href="${u.asset('fonts/cormorant-garamond-latin-600-normal.woff2')}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${u.asset('fonts/inter-latin-wght-normal.woff2')}" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${u.asset('css/styles.css')}">
+<link rel="stylesheet" href="${u.asset('css/styles.css')}?v=1.1">
 ${ld ? `<script type="application/ld+json">${ld}</script>` : ''}
 ${ld2 ? `<script type="application/ld+json">${ld2}</script>` : ''}
 </head>
