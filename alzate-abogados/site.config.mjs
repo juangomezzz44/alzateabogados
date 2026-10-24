@@ -27,7 +27,7 @@ export const config = {
     name: 'Álzate - Abogados',
     lawyer: 'Gilberto Álzate',
     lawyerFullNameInDiplomas: 'Gilberto Álzate Cardona', // tal como aparece en los diplomas de la fotografía
-    practiceSince: 1985, // dato confirmado por el cliente
+    practiceSince: 1985, // dato confirmado por el cliente (ya no se muestra: el sitio usa profile.experience)
     descriptor: 'Derecho de familia y civil',
     colors: {
       green: '#0E2D1F', // medido del logo oficial (14, 45, 31)
@@ -62,6 +62,8 @@ export const config = {
 
   // ---------- PERFIL DEL ABOGADO (editable) ----------
   profile: {
+    // Años de experiencia que se muestran (ej.: "+25"). Editable en el panel.
+    experience: val(settings.profile.experience) || '+25',
     bio: val(settings.profile.bio),
     professionalCard: val(settings.profile.professionalCard),
     showCredentialsFromPhoto: settings.profile.showCredentialsFromPhoto !== false,

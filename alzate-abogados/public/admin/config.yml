@@ -11,7 +11,7 @@
 #   Reemplace USUARIO/REPOSITORIO por el repositorio real (ej.: mi-usuario/alzate-abogados).
 backend:
   name: github
-  repo: juangomezzz44/alzate-abogado
+  repo: USUARIO/REPOSITORIO
   branch: main
 
 # OPCIÓN B: Decap Turbo (correo y contraseña, sin cuenta de GitHub para editar).
@@ -124,6 +124,7 @@ collections:
             name: profile
             widget: object
             fields:
+              - { name: experience, label: Años de experiencia que se muestran, widget: string, default: "+25", hint: "Escriba solo el número, por ejemplo +25. En el sitio aparece como: +25 años de experiencia." }
               - { name: bio, label: Biografía, widget: text, required: false, hint: "Solo datos verificados." }
               - { name: professionalCard, label: Tarjeta profesional, widget: string, required: false }
               - { name: showCredentialsFromPhoto, label: Mostrar la formación que aparece en los diplomas de la foto, widget: boolean, default: true }

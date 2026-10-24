@@ -473,3 +473,5 @@ main:focus{outline:none}
 .nav__cta .btn{white-space:nowrap}
 .brand__tag{white-space:nowrap}
 @media (max-width:1180px){.nav__toggle{display:inline-flex}.nav__list{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:8px var(--gutter) 22px;box-shadow:0 24px 40px -24px rgba(10,34,23,.45);display:none}.nav__list.is-open{display:flex}.nav__list a:not(.btn){padding:14px 4px;border-bottom:1px solid var(--line);font-size:1.05rem}.nav__list a:not(.btn)::after{display:none}.nav__cta{margin:16px 0 0}.nav__cta .btn{width:100%}}
+.values__photo img{object-position:50% 50%}
+.since{align-items:center}.since__year{font-size:3.6rem;color:var(--emerald)}

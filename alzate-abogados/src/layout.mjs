@@ -14,7 +14,7 @@ function jsonLdHome() {
     '@type': 'LegalService',
     name: config.brand.name,
     description:
-      'Asesoría en fideicomisos civiles, sucesiones y herencias, y en derecho de familia y derecho civil, con atención personalizada y trayectoria profesional desde 1985.',
+      'Asesoría en fideicomisos civiles, sucesiones y herencias, y en derecho de familia y derecho civil, con atención personalizada y más de 25 años de experiencia.',
     areaServed: [{ '@type': 'City', name: 'Bogotá' }, { '@type': 'Country', name: 'Colombia' }],
     knowsAbout: ['Fideicomisos civiles', 'Sucesiones', 'Herencias', 'Derecho de familia', 'Derecho civil', 'Sociedades comerciales'],
     employee: { '@type': 'Person', name: config.brand.lawyer, jobTitle: 'Abogado' },

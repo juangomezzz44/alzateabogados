@@ -37,7 +37,7 @@ function hero() {
       <ul class="chips" aria-label="Especialidades destacadas">
         ${chips.map((c) => `<li><a class="chip" href="${svcHref(c.s)}">${icon(c.ic, { size: 22 })}<span>${esc(c.label)}</span></a></li>`).join('')}
       </ul>
-      <p class="lead">Asesoría en derecho civil y de familia, con ejercicio profesional desde ${config.brand.practiceSince} y comunicación directa con el abogado.</p>
+      <p class="lead">Asesoría en derecho civil y de familia, con ${config.profile.experience} años de experiencia y comunicación directa con el abogado.</p>
       <div class="hero__actions">
         ${waButton({ message: waMessages.hero, label: 'Conversemos sobre su caso', variant: 'gold', size: 'lg' })}
         <a class="btn btn--ghost btn--lg" href="#abogado"><span>Conozca al abogado</span></a>
@@ -46,10 +46,10 @@ function hero() {
     <div class="collage">
       <figure class="collage__main">
         <div class="arch"><img src="${u.asset('img/gilberto-retrato.webp')}" width="640" height="810" alt="El abogado Gilberto Álzate, de pie junto a la biblioteca de su despacho" fetchpriority="high" decoding="async"></div>
-        <figcaption class="hero__chip"><span class="hero__chip-name">${esc(config.brand.lawyer)}</span><span class="hero__chip-role">Abogado · ejerce desde ${config.brand.practiceSince}</span></figcaption>
+        <figcaption class="hero__chip"><span class="hero__chip-name">${esc(config.brand.lawyer)}</span><span class="hero__chip-role">Abogado · ${config.profile.experience} años de experiencia</span></figcaption>
       </figure>
-      <img class="collage__dot collage__dot--a" src="${u.asset('img/detalle-biblioteca.webp')}" width="300" height="565" alt="Biblioteca jurídica del despacho, con textos de derecho civil y de familia" loading="lazy" decoding="async">
-      <img class="collage__dot collage__dot--b" src="${u.asset('img/detalle-banderas.webp')}" width="335" height="400" alt="Detalle del despacho con las banderas de Colombia y de Bogotá" loading="lazy" decoding="async">
+      <img class="collage__dot collage__dot--a" src="${u.asset('img/detalle-estatua.webp')}" width="420" height="420" alt="Estatua de la justicia con una balanza" loading="lazy" decoding="async">
+      <img class="collage__dot collage__dot--b" src="${u.asset('img/detalle-balanza.webp')}" width="420" height="420" alt="Balanza y mazo de madera sobre un escritorio" loading="lazy" decoding="async">
       <span class="collage__icon" aria-hidden="true">${icon('lawyer', { size: 34 })}</span>
     </div>
   </div>
@@ -58,7 +58,7 @@ function hero() {
 
 function facts() {
   const items = [
-    ['calendar', `Desde ${config.brand.practiceSince}`, 'ejerciendo en el ámbito jurídico'],
+    ['calendar', `${config.profile.experience} años de experiencia`, 'ejerciendo en el ámbito jurídico'],
     ['pin', 'Bogotá y todo el país', 'atención desde Bogotá'],
     ['chat', 'Directo con el abogado', 'comunicación clara y cercana'],
     ['scale-balance', 'Familia, civil y sociedades', 'áreas de práctica'],
@@ -90,7 +90,7 @@ function specialtiesSection() {
       </article>`,
         )
         .join('')}
-      <div class="spec__photo reveal" aria-hidden="true"><img src="${u.asset('img/detalle-biblioteca.webp')}" width="300" height="565" alt="" loading="lazy" decoding="async"></div>
+      <div class="spec__photo reveal" aria-hidden="true"><img src="${u.asset('img/balanza-mazo.webp')}" width="600" height="900" alt="" loading="lazy" decoding="async"></div>
     </div>
   </div>
 </section>`;
@@ -115,7 +115,7 @@ function values() {
           .join('')}
       </div>
     </div>
-    <figure class="values__photo reveal"><img src="${u.asset('img/despacho.webp')}" width="1280" height="960" alt="El abogado Gilberto Álzate en su despacho" loading="lazy" decoding="async"></figure>
+    <figure class="values__photo reveal"><img src="${u.asset('img/justicia-estatua.webp')}" width="800" height="1000" alt="Estatua de la justicia con los ojos vendados y una balanza" loading="lazy" decoding="async"></figure>
   </div>
 </section>`;
 }
@@ -253,11 +253,11 @@ function profile() {
     </div>
     <div class="profile__copy">
       <h2 id="abogado-title" class="reveal">Trayectoria que aporta perspectiva. Atención que pone a las personas en el centro</h2>
-      <div class="since reveal" aria-label="Ejerce desde ${config.brand.practiceSince}">
-        <span class="since__label">Ejerciendo desde</span>
-        <span class="since__year">${config.brand.practiceSince}</span>
+      <div class="since reveal" aria-label="${config.profile.experience} años de experiencia">
+        <span class="since__year">${config.profile.experience}</span>
+        <span class="since__label">años de experiencia</span>
       </div>
-      <p class="reveal"><strong>${esc(config.brand.lawyer)}</strong> ejerce en el ámbito jurídico desde ${config.brand.practiceSince}. Esa trayectoria se traduce en experiencia acumulada, conocimiento del ejercicio del derecho y una perspectiva que ayuda a comprender cada asunto en su contexto.</p>
+      <p class="reveal"><strong>${esc(config.brand.lawyer)}</strong> ejerce en el ámbito jurídico con ${config.profile.experience} años de experiencia. Esa trayectoria se traduce en experiencia acumulada, conocimiento del ejercicio del derecho y una perspectiva que ayuda a comprender cada asunto en su contexto.</p>
       <p class="reveal">La experiencia no está reñida con una atención actual, accesible y cercana: escuchar con atención la situación de cada persona, explicarla con claridad y acompañar con criterio.</p>
       ${bio}
       ${credentials}
