@@ -105,3 +105,7 @@ og.paste(ring, (700, 56), rmask)
 og.paste(pt, (708, 64), mask)
 og.save(OUT + "og-image.jpg", quality=88, optimize=True)
 print("ok")
+
+# --- Recortes adicionales de la misma fotografía (detalles reales del despacho) ---
+save(photo.crop((0, 395, 300, 960)), "detalle-biblioteca.webp", 90)
+save(photo.crop((0, 0, 335, 400)), "detalle-banderas.webp", 90)

@@ -11,7 +11,8 @@ import { config } from './site.config.mjs';
 import { isProd, isClean, waNumberValid, siteUrl, waNumberRaw } from './src/lib.mjs';
 import { homePage } from './src/pages/home.mjs';
 import { articlesIndexPage, articlePage, privacyPage, noticePage } from './src/pages/secondary.mjs';
-import { articles, articleWarnings } from './src/content.mjs';
+import { servicePage } from './src/pages/services.mjs';
+import { articles, articleWarnings, servicePages } from './src/content.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const out = process.env.ALZATE_OUT ? path.resolve(process.env.ALZATE_OUT) : path.join(root, 'dist');
@@ -52,12 +53,13 @@ await cp(path.join(root, 'public'), out, { recursive: true });
 await write('index.html', homePage());
 await write('articulos/index.html', articlesIndexPage());
 for (const a of articles) await write(`articulos/${a.slug}/index.html`, articlePage(a));
+for (const s of servicePages) await write(`servicios/${s.slug}/index.html`, servicePage(s));
 await write('politica-de-tratamiento-de-datos/index.html', privacyPage());
 await write('aviso-informativo/index.html', noticePage());
 await write('404.html', `<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Página no encontrada | ${config.brand.name}</title><body style="font-family:system-ui;background:#0E2D1F;color:#F7F5EF;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center"><main><h1 style="font-weight:600">Página no encontrada</h1><p><a style="color:#F7F5EF" href="/">Volver al inicio</a></p></main></body></html>`);
 
 /* ---------- Sitemap y robots ---------- */
-const urls = ['/', ...(articles.length ? ['/articulos/'] : []), ...articles.map((a) => `/articulos/${a.slug}/`)];
+const urls = ['/', ...servicePages.map((s) => `/servicios/${s.slug}/`), ...(articles.length ? ['/articulos/'] : []), ...articles.map((a) => `/articulos/${a.slug}/`)];
 const base = siteUrl || 'https://dominio-pendiente.invalid';
 await write(
   'sitemap.xml',

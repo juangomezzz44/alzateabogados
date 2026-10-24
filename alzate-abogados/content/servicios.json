@@ -1,72 +1,92 @@
 {
+  "especialidades": [
+    {
+      "slug": "fideicomiso-civil",
+      "icon": "trust",
+      "name": "Fideicomisos civiles",
+      "asunto": "un fideicomiso civil",
+      "text": "Orientación sobre el fideicomiso civil, una figura del derecho civil relacionada con la propiedad de ciertos bienes y su paso a otra persona cuando se cumple una condición.",
+      "detail": "El fideicomiso civil es una figura del derecho civil relacionada con la propiedad de ciertos bienes y su paso a otra persona cuando se cumple una condición. Sus efectos dependen de cómo se haya constituido y de las circunstancias de cada caso, por eso conviene revisarlo con cuidado.\n\n**Puede ser útil consultar si:**\n\n- Quiere entender si esta figura aplica a sus bienes o a los de su familia.\n- Recibió, o va a recibir, bienes sujetos a un fideicomiso y desea conocer su situación.\n- Necesita revisar un documento o una situación relacionada con un fideicomiso civil.\n- El fideicomiso se relaciona con una herencia."
+    },
+    {
+      "slug": "sucesiones-y-herencias",
+      "icon": "tree",
+      "name": "Sucesiones y herencias",
+      "asunto": "una sucesión o una herencia",
+      "text": "Orientación general sobre los bienes y derechos de una persona fallecida, quiénes pueden intervenir y los primeros pasos para el trámite de una sucesión o una herencia.",
+      "detail": "Cuando una persona fallece, sus bienes y obligaciones deben definirse entre quienes tienen derecho a ellos. A ese proceso se le conoce como sucesión, y lo que recibe cada persona es la herencia. La forma de tramitarlo depende de cada caso: por ejemplo, de si existe un testamento y de quiénes son los herederos.\n\n**Puede ser útil consultar si:**\n\n- Falleció un familiar y quiere saber por dónde empezar.\n- Existe un testamento y necesita entender qué implica.\n- Hay diferencias entre los herederos sobre los bienes.\n- Necesita orientación sobre bienes de una persona fallecida, como una vivienda, un vehículo o una cuenta."
+    }
+  ],
   "familia": [
     {
       "slug": "divorcios",
       "icon": "rings",
       "name": "Divorcios",
       "asunto": "un divorcio",
-      "text": "Orientación para quienes están considerando poner fin al matrimonio y desean conocer las alternativas y los pasos generales que conviene tener en cuenta."
+      "text": "Orientación para quienes están considerando poner fin al matrimonio y desean conocer las alternativas y los pasos generales que conviene tener en cuenta.",
+      "detail": "El divorcio pone fin al matrimonio. En una primera conversación suele ser útil aclarar si hay hijos menores, si existen bienes en común y si hay acuerdo entre las partes, porque de eso depende el camino a seguir.\n\n**Puede ser útil consultar si:**\n\n- Está considerando separarse y quiere conocer sus alternativas.\n- Necesita entender qué suele revisarse antes de iniciar el trámite.\n- Quiere saber cómo prepararse para una primera conversación con el abogado."
     },
     {
       "slug": "union-marital-de-hecho",
       "icon": "link",
       "name": "Declaración de unión marital de hecho",
       "asunto": "la declaración de una unión marital de hecho",
-      "text": "Pensada para parejas que han convivido como compañeros permanentes y necesitan aclarar o formalizar el reconocimiento de su unión."
+      "text": "Pensada para parejas que han convivido como compañeros permanentes y necesitan aclarar o formalizar el reconocimiento de su unión.",
+      "detail": "La unión marital de hecho es la que forman dos personas que, sin estar casadas, hacen una comunidad de vida permanente y singular. Declararla permite aclarar la situación de la pareja frente a terceros y frente a los bienes.\n\n**Puede ser útil consultar si:**\n\n- Convivió con su pareja y necesita que esa unión sea reconocida.\n- Quiere saber qué suele tenerse en cuenta para demostrarla.\n- La unión terminó y se relaciona con una sociedad patrimonial por liquidar."
     },
     {
       "slug": "liquidacion-sociedad-conyugal",
       "icon": "scale-balance",
       "name": "Liquidación de sociedad conyugal",
       "asunto": "la liquidación de una sociedad conyugal",
-      "text": "Puede ser pertinente cuando existe o existió un matrimonio y hay que definir la situación de los bienes de la pareja."
+      "text": "Puede ser pertinente cuando existe o existió un matrimonio y hay que definir la situación de los bienes de la pareja.",
+      "detail": "La sociedad conyugal se relaciona con los bienes de las personas que contrajeron matrimonio. Liquidarla es definir qué bienes y deudas existen y cómo se distribuyen entre los cónyuges o sus herederos.\n\n**Puede ser útil consultar si:**\n\n- Se divorció o va a divorciarse y quiere ordenar la situación de los bienes.\n- Necesita entender qué suele incluirse al hacer el inventario.\n- Hay desacuerdos sobre cómo repartir lo que construyeron durante el matrimonio."
     },
     {
       "slug": "liquidacion-sociedad-patrimonial",
       "icon": "home",
       "name": "Liquidación de sociedad patrimonial",
       "asunto": "la liquidación de una sociedad patrimonial entre compañeros permanentes",
-      "text": "Relacionada con los bienes de los compañeros permanentes cuando la unión marital termina o ha sido declarada."
+      "text": "Relacionada con los bienes de los compañeros permanentes cuando la unión marital termina o ha sido declarada.",
+      "detail": "La sociedad patrimonial se relaciona con los bienes de los compañeros permanentes que han convivido en unión marital de hecho. Liquidarla es definir qué bienes y deudas existen y cómo se reparten.\n\n**Puede ser útil consultar si:**\n\n- La unión marital terminó y hay bienes por repartir.\n- Necesita saber si su situación corresponde a una sociedad patrimonial.\n- Quiere conocer los pasos generales para liquidarla."
     },
     {
       "slug": "custodia-y-cuidado-personal",
       "icon": "child",
       "name": "Custodia y cuidado personal de los hijos",
       "asunto": "la custodia y el cuidado personal de mis hijos",
-      "text": "Orientación sobre cómo se organiza el cuidado y la convivencia con los hijos menores cuando los padres se separan."
+      "text": "Orientación sobre cómo se organiza el cuidado y la convivencia con los hijos menores cuando los padres se separan.",
+      "detail": "El cuidado personal de los hijos se refiere a quién los tiene a su cargo y cómo se organiza su convivencia y su relación con ambos padres cuando estos se separan. Siempre se orienta a lo que resulte mejor para los niños, niñas y adolescentes.\n\n**Puede ser útil consultar si:**\n\n- Se separó y necesita organizar el cuidado de sus hijos.\n- Quiere conocer qué alternativas existen según su situación.\n- Hay desacuerdos sobre la convivencia o las visitas."
     },
     {
       "slug": "cuota-de-alimentos",
       "icon": "coins",
       "name": "Cuota de alimentos",
       "asunto": "una cuota de alimentos",
-      "text": "Consulta sobre la fijación, el ajuste o el cumplimiento de la obligación alimentaria en favor de los hijos u otros beneficiarios."
+      "text": "Consulta sobre la fijación, el ajuste o el cumplimiento de la obligación alimentaria en favor de los hijos u otros beneficiarios.",
+      "detail": "La obligación alimentaria busca cubrir las necesidades de quien tiene derecho a recibirla, como los hijos menores. Puede ser necesario fijar su monto, ajustarlo o exigir su cumplimiento.\n\n**Puede ser útil consultar si:**\n\n- Necesita que se fije o se revise una cuota de alimentos.\n- La cuota acordada no se está cumpliendo.\n- Cambiaron las circunstancias de quien paga o de quien recibe."
     },
     {
       "slug": "investigacion-paternidad",
       "icon": "search-person",
       "name": "Investigación y declaración judicial de paternidad",
       "asunto": "la investigación o declaración judicial de paternidad",
-      "text": "Para quienes necesitan orientación sobre el reconocimiento de la filiación cuando este no se ha dado de manera voluntaria."
-    },
-    {
-      "slug": "sucesiones",
-      "icon": "document",
-      "name": "Sucesiones",
-      "asunto": "una sucesión",
-      "text": "Orientación general sobre la situación de los bienes y derechos de una persona fallecida y los primeros pasos para su trámite."
+      "text": "Para quienes necesitan orientación sobre el reconocimiento de la filiación cuando este no se ha dado de manera voluntaria.",
+      "detail": "Cuando la paternidad no ha sido reconocida de manera voluntaria, puede discutirse judicialmente para que se declare. Esto tiene efectos sobre los derechos de los hijos, entre ellos el nombre, los alimentos y la herencia.\n\n**Puede ser útil consultar si:**\n\n- Un hijo o hija no ha sido reconocido por su padre.\n- Necesita orientación sobre cómo se plantea esta situación.\n- Quiere conocer los pasos generales antes de decidir."
     }
   ],
   "civil": {
     "icon": "book",
     "name": "Derecho civil",
     "asunto": "un asunto de derecho civil",
-    "text": "El derecho civil reúne asuntos patrimoniales y personales de la vida cotidiana. Si su situación es de esta naturaleza, cuéntenos de manera general de qué se trata y conozca si podemos orientarle."
+    "text": "El derecho civil reúne asuntos patrimoniales y personales de la vida cotidiana. Si su situación es de esta naturaleza, cuéntenos de manera general de qué se trata y conozca si podemos orientarle.",
+    "detail": ""
   },
   "comercial": {
     "icon": "building",
     "name": "Sociedades comerciales",
     "asunto": "asesoría jurídica relacionada con sociedades comerciales",
-    "text": "Asesoría jurídica en asuntos relacionados con sociedades comerciales. El alcance de la asesoría se define directamente con el abogado, según cada caso."
+    "text": "Asesoría jurídica en asuntos relacionados con sociedades comerciales. El alcance de la asesoría se define directamente con el abogado, según cada caso.",
+    "detail": ""
   }
 }

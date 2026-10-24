@@ -15,11 +15,30 @@ const readJson = (f) => JSON.parse(readFileSync(path.join(dir, f), 'utf8'));
 
 const servicios = readJson('servicios.json');
 const clean = (s) => (s || '').toString();
-const svc = (s) => ({ ...s, asunto: clean(s.asunto).trim() || clean(s.name).toLowerCase(), icon: s.icon || 'document' });
+const slugify = (t) => clean(t).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
+// El texto de los servicios y artículos se escribe en Markdown. HTML incrustado se descarta por seguridad.
+const md = new Marked({ gfm: true, renderer: { html: () => '' } });
+
+const svc = (s) => {
+  const name = clean(s.name).trim();
+  return {
+    ...s,
+    name,
+    slug: slugify(s.slug) || slugify(name) || 'servicio',
+    asunto: clean(s.asunto).trim() || name.toLowerCase(),
+    icon: s.icon || 'document',
+    detailHtml: clean(s.detail).trim() ? md.parse(clean(s.detail).trim()) : '',
+  };
+};
+
+/** Especialidades destacadas (primera pantalla y banda propia). */
+export const specialties = (servicios.especialidades || []).map(svc);
 export const familyServices = (servicios.familia || []).map(svc);
 export const civilArea = svc(servicios.civil);
 export const commercialArea = svc(servicios.comercial);
+/** Servicios que tienen página propia en /servicios/<slug>/ */
+export const servicePages = [...specialties, ...familyServices];
 
 export const pillars = [
   {
@@ -62,8 +81,6 @@ export const faqs = (readJson('faq.json').items || [])
 /* ---------- Artículos (content/articulos/*.md) ---------- */
 export const articleWarnings = [];
 
-// El texto del artículo se escribe en Markdown. HTML incrustado se descarta por seguridad.
-const md = new Marked({ gfm: true, renderer: { html: () => '' } });
 // Fecha sin hora (AAAA-MM-DD) llega como medianoche UTC: se muestra tal cual para no correrla un día.
 const dateLabel = (iso) =>
   new Intl.DateTimeFormat('es-CO', {

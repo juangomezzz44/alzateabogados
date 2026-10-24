@@ -84,7 +84,6 @@ export const config = {
   // ---------- CONTENIDO JURÍDICO (editable) ----------
   content: {
     // 'familia' = Sucesiones dentro de Derecho de familia | 'propia' = tarjeta independiente
-    sucesiones: env.ALZATE_SUCESIONES || (settings.content.sucesiones === 'propia' ? 'propia' : 'familia'),
     legalReviewDone: settings.content.legalReviewDone === true,
   },
 };
@@ -107,6 +106,7 @@ export const waMessages = {
 export const nav = [
   { label: 'Inicio', href: 'index' },
   { label: 'El abogado', href: 'index#abogado' },
+  { label: 'Especialidades', href: 'index#especialidades' },
   { label: 'Áreas de práctica', href: 'index#areas' },
   { label: 'Artículos jurídicos', href: 'articulos' },
   { label: 'Contacto', href: 'index#contacto' },

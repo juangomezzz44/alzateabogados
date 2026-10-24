@@ -11,7 +11,7 @@
 #   Reemplace USUARIO/REPOSITORIO por el repositorio real (ej.: mi-usuario/alzate-abogados).
 backend:
   name: github
-  repo: USUARIO/REPOSITORIO
+  repo: juangomezzz44/alzate-abogado
   branch: main
 
 # OPCIÓN B: Decap Turbo (correo y contraseña, sin cuenta de GitHub para editar).
@@ -144,13 +144,6 @@ collections:
             name: content
             widget: object
             fields:
-              - name: sucesiones
-                label: Dónde mostrar "Sucesiones"
-                widget: select
-                options:
-                  - { label: Dentro de Derecho de familia, value: familia }
-                  - { label: Como área independiente, value: propia }
-                default: familia
               - { name: legalReviewDone, label: El abogado aprobó las preguntas frecuentes y los textos de servicios, widget: boolean, default: false }
 
       - name: servicios
@@ -158,8 +151,8 @@ collections:
         file: content/servicios.json
         format: json
         fields:
-          - label: Derecho de familia (servicios)
-            name: familia
+          - label: Especialidades destacadas (aparecen en la primera pantalla)
+            name: especialidades
             widget: list
             summary: "{{fields.name}}"
             fields: &servicio
@@ -181,7 +174,25 @@ collections:
                   - { label: Documento, value: document }
                   - { label: Libro, value: book }
                   - { label: Edificio de oficinas, value: building }
-              - { name: slug, label: Identificador interno, widget: hidden, required: false }
+                  - { label: Árbol familiar, value: tree }
+                  - { label: Llave, value: key }
+                  - { label: Fideicomiso (escudo con llave), value: trust }
+                  - { label: Testamento, value: will }
+                  - { label: Maletín, value: briefcase }
+                  - { label: Abogado, value: lawyer }
+              - name: detail
+                label: Texto de la página del servicio (opcional)
+                widget: markdown
+                required: false
+                buttons: [bold, italic, link, bulleted-list, numbered-list]
+                editor_components: []
+                hint: "Explicación general, sin prometer resultados ni citar normas sin verificarlas. Si se deja vacío, la página solo muestra la explicación breve."
+              - { name: slug, label: Identificador interno (dirección de la página), widget: hidden, required: false }
+          - label: Derecho de familia (servicios)
+            name: familia
+            widget: list
+            summary: "{{fields.name}}"
+            fields: *servicio
           - { label: Derecho civil, name: civil, widget: object, fields: *servicio }
           - { label: Sociedades comerciales, name: comercial, widget: object, fields: *servicio }
 

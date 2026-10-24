@@ -2,15 +2,17 @@ import { config, waMessages } from '../../site.config.mjs';
 import { esc, makeUrl, waLink, waPendingAttr, waNumberValid, isProd, isClean, pending } from '../lib.mjs';
 import { icon, waIcon } from '../icons.mjs';
 import { page, waButton, homeJsonLd } from '../layout.mjs';
-import { familyServices, civilArea, commercialArea, pillars, steps, faqs, articles, comingSoon } from '../content.mjs';
+import { specialties, familyServices, civilArea, commercialArea, pillars, steps, faqs, articles, comingSoon } from '../content.mjs';
 
 const depth = 0;
 const u = makeUrl(depth);
 
 const waAttrs = () => `data-wa${waPendingAttr()}${waNumberValid ? ' target="_blank" rel="noopener noreferrer"' : ''}`;
 
-function serviceCard(s, { featured = false } = {}) {
-  return `<article class="card reveal ${featured ? 'card--featured' : ''}">
+const svcHref = (s) => `${u.prefix}servicios/${s.slug}/`;
+
+function serviceCard(s) {
+  return `<article class="card reveal">
     <span class="card__icon">${icon(s.icon, { size: 26 })}</span>
     <h3>${esc(s.name)}</h3>
     <p>${esc(s.text)}</p>
@@ -19,120 +21,140 @@ function serviceCard(s, { featured = false } = {}) {
 }
 
 function hero() {
+  const [fid, suc] = specialties;
+  const chips = [
+    fid && { s: fid, label: 'Fideicomisos civiles', ic: fid.icon },
+    suc && { s: suc, label: 'Sucesiones', ic: suc.icon },
+    suc && { s: suc, label: 'Herencias', ic: 'will' },
+  ].filter(Boolean);
   return `<section class="hero" aria-labelledby="hero-title">
   <div class="hero__bg" aria-hidden="true"></div>
   <div class="container hero__grid">
     <div class="hero__copy">
-      <p class="eyebrow eyebrow--light">Álzate - Abogados <span class="sep">|</span> Derecho de familia y civil</p>
-      <h1 id="hero-title">Su caso merece <em>atención jurídica personal</em>.</h1>
-      <p class="lead">Asesoría jurídica en asuntos de familia y derecho civil, con una trayectoria profesional consolidada de más de 25 años y un enfoque cercano, directo y personalizado.</p>
-      <div class="hero__actions">
-        ${waButton({ message: waMessages.hero, label: 'Conversemos sobre su caso', variant: 'light', size: 'lg' })}
-        <a class="btn btn--ghost btn--lg" href="#abogado"><span>Conozca al abogado</span>${icon('arrow', { size: 18 })}</a>
-      </div>
-      <ul class="hero__facts" aria-label="Datos destacados">
-        <li>${icon('check', { size: 18 })} Más de 25 años de experiencia profesional</li>
-        <li>${icon('check', { size: 18 })} Comunicación directa con el abogado</li>
-        <li>${icon('check', { size: 18 })} Trabaja desde Bogotá y atiende en todo el país</li>
+      <p class="eyebrow eyebrow--light">Álzate - Abogados · Bogotá y todo el país</p>
+      <h1 id="hero-title">Su caso merece atención jurídica personal</h1>
+      <p class="hero__specialty">Fideicomisos civiles, sucesiones y herencias</p>
+      <ul class="chips" aria-label="Especialidades destacadas">
+        ${chips.map((c) => `<li><a class="chip" href="${svcHref(c.s)}">${icon(c.ic, { size: 22 })}<span>${esc(c.label)}</span></a></li>`).join('')}
       </ul>
-    </div>
-    <figure class="hero__visual">
-      <div class="arch">
-        <img src="${u.asset('img/gilberto-retrato.webp')}" width="640" height="810" alt="El abogado Gilberto Álzate, de pie junto a la biblioteca de su despacho" fetchpriority="high" decoding="async">
+      <p class="lead">Asesoría en derecho civil y de familia, con ejercicio profesional desde ${config.brand.practiceSince} y comunicación directa con el abogado.</p>
+      <div class="hero__actions">
+        ${waButton({ message: waMessages.hero, label: 'Conversemos sobre su caso', variant: 'gold', size: 'lg' })}
+        <a class="btn btn--ghost btn--lg" href="#abogado"><span>Conozca al abogado</span></a>
       </div>
-      <figcaption class="hero__chip">
-        <span class="hero__chip-name">${esc(config.brand.lawyer)}</span>
-        <span class="hero__chip-role">Abogado · +25 años de trayectoria</span>
-      </figcaption>
-    </figure>
+    </div>
+    <div class="collage">
+      <figure class="collage__main">
+        <div class="arch"><img src="${u.asset('img/gilberto-retrato.webp')}" width="640" height="810" alt="El abogado Gilberto Álzate, de pie junto a la biblioteca de su despacho" fetchpriority="high" decoding="async"></div>
+        <figcaption class="hero__chip"><span class="hero__chip-name">${esc(config.brand.lawyer)}</span><span class="hero__chip-role">Abogado · ejerce desde ${config.brand.practiceSince}</span></figcaption>
+      </figure>
+      <img class="collage__dot collage__dot--a" src="${u.asset('img/detalle-biblioteca.webp')}" width="300" height="565" alt="Biblioteca jurídica del despacho, con textos de derecho civil y de familia" loading="lazy" decoding="async">
+      <img class="collage__dot collage__dot--b" src="${u.asset('img/detalle-banderas.webp')}" width="335" height="400" alt="Detalle del despacho con las banderas de Colombia y de Bogotá" loading="lazy" decoding="async">
+      <span class="collage__icon" aria-hidden="true">${icon('lawyer', { size: 34 })}</span>
+    </div>
+  </div>
+</section>`;
+}
+
+function facts() {
+  const items = [
+    ['calendar', `Desde ${config.brand.practiceSince}`, 'ejerciendo en el ámbito jurídico'],
+    ['pin', 'Bogotá y todo el país', 'atención desde Bogotá'],
+    ['chat', 'Directo con el abogado', 'comunicación clara y cercana'],
+    ['scale-balance', 'Familia, civil y sociedades', 'áreas de práctica'],
+  ];
+  return `<section class="facts" aria-label="Datos destacados"><ul class="container facts__list">
+    ${items.map(([ic, t, d]) => `<li>${icon(ic, { size: 30 })}<span><strong>${esc(t)}</strong><small>${esc(d)}</small></span></li>`).join('')}
+  </ul></section>`;
+}
+
+function specialtiesSection() {
+  const tones = ['bosque', 'esmeralda'];
+  return `<section class="section section--tight" id="especialidades" aria-labelledby="esp-title">
+  <div class="container">
+    <header class="section__head reveal">
+      <h2 id="esp-title">Especialidades destacadas</h2>
+      <p class="section__lead">Orientación en dos asuntos del derecho civil que suelen requerir cuidado: los fideicomisos civiles y las sucesiones y herencias.</p>
+    </header>
+    <div class="spec">
+      ${specialties
+        .map(
+          (s, i) => `<article class="spec__card spec__card--${tones[i % 2]} reveal">
+        <span class="spec__icon">${icon(s.icon, { size: 44 })}</span>
+        <h3>${esc(s.name)}</h3>
+        <p>${esc(s.text)}</p>
+        <div class="spec__actions">
+          <a class="btn btn--gold btn--sm" href="${svcHref(s)}"><span>Más información</span>${icon('arrow', { size: 16 })}</a>
+          <a class="spec__wa" href="${esc(waLink(waMessages.topic(s.asunto)))}" ${waAttrs()} aria-label="Consultar por WhatsApp sobre: ${esc(s.name)}">${waIcon(18)}<span>WhatsApp</span></a>
+        </div>
+      </article>`,
+        )
+        .join('')}
+      <div class="spec__photo reveal" aria-hidden="true"><img src="${u.asset('img/detalle-biblioteca.webp')}" width="300" height="565" alt="" loading="lazy" decoding="async"></div>
+    </div>
   </div>
 </section>`;
 }
 
 function values() {
-  return `<section class="section" id="atencion" aria-labelledby="valor-title">
-  <div class="container">
-    <header class="section__head reveal">
-      <p class="eyebrow">Una atención más personal</p>
-      <h2 id="valor-title">Más que un trámite, una situación que merece ser comprendida</h2>
-      <span class="ornament reveal"></span>
-      <p class="section__lead">En Álzate - Abogados la prioridad es escuchar, comprender las particularidades de cada situación y acompañar con claridad.</p>
-    </header>
-    <div class="pillars">
-      ${pillars
-        .map(
-          (p, i) => `<article class="pillar reveal" style="--d:${i * 90}ms">
-        <span class="pillar__icon">${icon(p.icon, { size: 30 })}</span>
-        <h3>${esc(p.title)}</h3>
-        <p>${esc(p.text)}</p>
-      </article>`,
-        )
-        .join('')}
+  return `<section class="section section--mint" id="atencion" aria-labelledby="valor-title">
+  <div class="container values">
+    <div class="values__copy">
+      <header class="section__head reveal">
+        <h2 id="valor-title">Más que un trámite, una situación que merece ser comprendida</h2>
+        <p class="section__lead">La prioridad es escuchar, comprender las particularidades de cada situación y acompañar con claridad.</p>
+      </header>
+      <div class="pillars">
+        ${pillars
+          .map(
+            (p, i) => `<article class="pillar reveal" style="--d:${i * 90}ms">
+          <span class="pillar__icon">${icon(p.icon, { size: 28 })}</span>
+          <div><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p></div>
+        </article>`,
+          )
+          .join('')}
+      </div>
     </div>
-  </div>
-</section>`;
-}
-
-function specializedArea() {
-  return `<section class="section section--dark" id="especialidades" aria-labelledby="espec-title">
-  <div class="container">
-    <header class="section__head reveal">
-      <p class="eyebrow">Especialidad destacada</p>
-      <h2 id="espec-title">Sucesiones, Fideicomisos Civiles y Herencias</h2>
-      <span class="ornament reveal"></span>
-      <p class="section__lead">Proteja el legado familiar con una gestión jurídica rigurosa y humana. Nos especializamos en la organización y liquidación de patrimonios para garantizar la tranquilidad de las próximas generaciones.</p>
-    </header>
-    <div class="secondary reveal">
-      <article class="card card--wide">
-        <span class="card__icon">${icon('scale-balance', { size: 32 })}</span>
-        <h3>Sucesiones y Herencias</h3>
-        <p>Trámites de liquidación de herencias, ya sean mutuo acuerdo o contenciosas. Aseguramos una distribución justa y legal del patrimonio siguiendo la normativa vigente.</p>
-        <a class="card__link" href="${esc(waLink(waMessages.topic('sucesiones')))}" ${waAttrs()} aria-label="Consultar sobre sucesiones">${waIcon(18)}<span>Consultar por WhatsApp</span>${icon('arrow', { size: 16 })}</a>
-      </article>
-      <article class="card card--wide">
-        <span class="card__icon">${icon('shield', { size: 32 })}</span>
-        <h3>Fideicomisos Civiles</h3>
-        <p>Creación y administración de fideicomisos para asegurar que los bienes lleguen a los beneficiarios designados bajo las condiciones exactas que usted desea.</p>
-        <a class="card__link" href="${esc(waLink(waMessages.topic('fideicomiso')))}" ${waAttrs()} aria-label="Consultar sobre fideicomisos">${waIcon(18)}<span>Consultar por WhatsApp</span>${icon('arrow', { size: 16 })}</a>
-      </article>
-    </div>
-    <div class="center reveal" style="margin-top:32px">
-      ${waButton({ message: waMessages.hero, label: 'Asesoremos su patrimonio', variant: 'outline' })}
-    </div>
+    <figure class="values__photo reveal"><img src="${u.asset('img/despacho.webp')}" width="1280" height="960" alt="El abogado Gilberto Álzate en su despacho" loading="lazy" decoding="async"></figure>
   </div>
 </section>`;
 }
 
 function areas() {
-  return `<section class="section section--ivory" id="areas" aria-labelledby="areas-title">
+  return `<section class="section section--tight" id="areas" aria-labelledby="areas-title">
   <div class="container">
     <header class="section__head reveal">
-      <p class="eyebrow">Áreas de práctica</p>
-      <h2 id="areas-title">Asesoría jurídica en los asuntos que más importan en la vida personal y familiar</h2>
+      <h2 id="areas-title">Áreas de práctica</h2>
       <p class="section__lead">Cada explicación es general e informativa. Para saber cómo aplica a su situación, conversemos.</p>
     </header>
 
     <div class="family reveal">
       <div class="family__intro">
-        <span class="family__badge">Área principal</span>
+        <span class="family__icon">${icon('rings', { size: 40 })}</span>
         <h3>Derecho de familia</h3>
         <p>Acompañamiento en las decisiones familiares y patrimoniales que marcan un antes y un después, con lenguaje claro y atención directa.</p>
       </div>
-      <div class="family__grid">
-        ${familyServices.filter((s) => !(s.slug === 'sucesiones' && config.content.sucesiones === 'propia')).map((s) => serviceCard(s, { featured: true })).join('')}
-      </div>
+      <ul class="family__list">
+        ${familyServices
+          .map(
+            (s) => `<li class="frow">
+          <a class="frow__main" href="${svcHref(s)}"><span class="frow__icon">${icon(s.icon, { size: 22 })}</span><span><strong>${esc(s.name)}</strong><small>${esc(s.text)}</small></span></a>
+          <a class="frow__wa" href="${esc(waLink(waMessages.topic(s.asunto)))}" ${waAttrs()} aria-label="Consultar por WhatsApp sobre: ${esc(s.name)}">${waIcon(20)}</a>
+        </li>`,
+          )
+          .join('')}
+      </ul>
     </div>
 
     <div class="secondary">
-      ${config.content.sucesiones === 'propia' ? serviceCard(familyServices.find((s) => s.slug === 'sucesiones')).replace('class="card reveal', 'class="card card--wide reveal') : ''}
-      <article class="card card--wide reveal">
+      <article class="card card--cream reveal">
         <span class="card__icon">${icon(civilArea.icon, { size: 26 })}</span>
         <h3>${esc(civilArea.name)}</h3>
         <p>${esc(civilArea.text)}</p>
         ${isClean ? '' : `<p>${pending('listado de asuntos civiles que el abogado atiende')}</p>`}
         <a class="card__link" href="${esc(waLink(waMessages.topic(civilArea.asunto)))}" ${waAttrs()} aria-label="Consultar por WhatsApp sobre derecho civil">${waIcon(18)}<span>Consultar por WhatsApp</span>${icon('arrow', { size: 16 })}</a>
       </article>
-      <article class="card card--wide card--quiet reveal">
+      <article class="card card--mint reveal">
         <span class="card__icon">${icon(commercialArea.icon, { size: 26 })}</span>
         <h3>${esc(commercialArea.name)}</h3>
         <p>${esc(commercialArea.text)}</p>
@@ -223,20 +245,19 @@ function profile() {
     : isClean
       ? ''
       : `<div class="formation"><p class="slot">${pending('formación académica y credenciales autorizadas')}</p></div>`;
-  return `<section class="section" id="abogado" aria-labelledby="abogado-title">
+  return `<section class="section section--cream" id="abogado" aria-labelledby="abogado-title">
   <div class="container profile">
     <div class="profile__media">
       ${officeExplorer()}
       ${photoSlot}
     </div>
     <div class="profile__copy">
-      <p class="eyebrow reveal">El abogado</p>
       <h2 id="abogado-title" class="reveal">Trayectoria que aporta perspectiva. Atención que pone a las personas en el centro</h2>
-      <div class="since reveal" aria-label="Más de 25 años de trayectoria">
-        <span class="since__label">Experiencia profesional</span>
-        <span class="since__year">+25 años</span>
+      <div class="since reveal" aria-label="Ejerce desde ${config.brand.practiceSince}">
+        <span class="since__label">Ejerciendo desde</span>
+        <span class="since__year">${config.brand.practiceSince}</span>
       </div>
-      <p class="reveal"><strong>${esc(config.brand.lawyer)}</strong> ejerce en el ámbito jurídico con una trayectoria de más de 25 años. Esa experiencia se traduce en conocimiento profundo del ejercicio del derecho y una perspectiva que ayuda a comprender cada asunto en su contexto.</p>
+      <p class="reveal"><strong>${esc(config.brand.lawyer)}</strong> ejerce en el ámbito jurídico desde ${config.brand.practiceSince}. Esa trayectoria se traduce en experiencia acumulada, conocimiento del ejercicio del derecho y una perspectiva que ayuda a comprender cada asunto en su contexto.</p>
       <p class="reveal">La experiencia no está reñida con una atención actual, accesible y cercana: escuchar con atención la situación de cada persona, explicarla con claridad y acompañar con criterio.</p>
       ${bio}
       ${credentials}
@@ -247,11 +268,10 @@ function profile() {
 }
 
 function how() {
-  return `<section class="section section--ivory" id="como-funciona" aria-labelledby="como-title">
+  return `<section class="section section--emerald" id="como-funciona" aria-labelledby="como-title">
   <div class="container">
     <header class="section__head reveal">
-      <p class="eyebrow">Cómo funciona la atención</p>
-      <h2 id="como-title">Tres pasos para empezar</h2>
+      <h2 id="como-title">Cómo funciona la atención: tres pasos para empezar</h2>
     </header>
     <ol class="steps">
       ${steps
@@ -270,34 +290,39 @@ function how() {
 }
 
 function faq() {
-  return `<section class="section" id="preguntas-frecuentes" aria-labelledby="faq-title">
-  <div class="container container--narrow">
-    <header class="section__head reveal">
-      <p class="eyebrow">Preguntas frecuentes</p>
-      <h2 id="faq-title">Resolvamos sus primeras dudas</h2>
-      <p class="section__lead">Respuestas generales e informativas. No reemplazan una evaluación jurídica de su caso particular.</p>
-    </header>
-    <div class="faq reveal">
-      ${faqs
-        .map(
-          (f, i) => `<details class="faq__item" name="faq">
-        <summary id="faq-q${i}"><span>${esc(f.q)}</span><span class="faq__icon" aria-hidden="true">${icon('plus', { size: 22 })}</span></summary>
-        <div class="faq__answer" role="region" aria-labelledby="faq-q${i}">${f.a.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
-      </details>`,
-        )
-        .join('')}
+  return `<section class="section section--tight" id="preguntas-frecuentes" aria-labelledby="faq-title">
+  <div class="container faqwrap">
+    <div>
+      <header class="section__head reveal">
+        <h2 id="faq-title">Resolvamos sus primeras dudas</h2>
+        <p class="section__lead">Respuestas generales e informativas. No reemplazan una evaluación jurídica de su caso particular.</p>
+      </header>
+      <div class="faq reveal">
+        ${faqs
+          .map(
+            (f, i) => `<details class="faq__item" name="faq">
+          <summary id="faq-q${i}"><span>${esc(f.q)}</span><span class="faq__icon" aria-hidden="true">${icon('plus', { size: 22 })}</span></summary>
+          <div class="faq__answer" role="region" aria-labelledby="faq-q${i}">${f.a.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
+        </details>`,
+          )
+          .join('')}
+      </div>
+      ${isClean || config.content.legalReviewDone ? '' : `<p class="slot">${pending('revisión y aprobación del abogado de estas respuestas')}</p>`}
     </div>
-    ${isClean || config.content.legalReviewDone ? '' : `<p class="slot">${pending('revisión y aprobación del abogado de estas respuestas')}</p>`}
-    <div class="faq__cta reveal">${waButton({ message: waMessages.faq, label: '¿Otra pregunta? Escríbanos', variant: 'outline' })}</div>
+    <aside class="faqaside reveal" aria-label="Contacto">
+      <img src="${u.asset('img/gilberto-avatar.webp')}" width="88" height="88" alt="" loading="lazy" decoding="async">
+      <h3>¿Otra pregunta?</h3>
+      <p>Escríbale directamente al abogado y cuéntele su situación.</p>
+      ${waButton({ message: waMessages.faq, label: 'Escribir por WhatsApp', variant: 'gold' })}
+    </aside>
   </div>
 </section>`;
 }
 
 function articlesTeaser() {
-  return `<section class="section section--ivory" id="orientacion" aria-labelledby="art-title">
+  return `<section class="section section--mint" id="orientacion" aria-labelledby="art-title">
   <div class="container">
     <header class="section__head reveal">
-      <p class="eyebrow">Orientación jurídica</p>
       <h2 id="art-title">Conozca sus derechos</h2>
       <p class="section__lead">Una sección para comprender conceptos y procedimientos generales. Los artículos se publican después de su revisión jurídica.</p>
     </header>
@@ -329,13 +354,13 @@ function finalCta() {
 export function homePage() {
   return page({
     depth,
-    title: 'Abogado de familia y derecho civil en Bogotá | Álzate - Abogados',
+    title: 'Abogado de sucesiones, herencias y fideicomisos civiles en Bogotá | Álzate - Abogados',
     description:
-      'Asesoría jurídica en Bogotá y todo el país en derecho de familia y civil: divorcios, unión marital de hecho, sociedad conyugal y patrimonial, custodia, alimentos, paternidad y sucesiones. Atención personalizada.',
+      'Asesoría en fideicomisos civiles, sucesiones y herencias, y en derecho de familia (divorcios, unión marital de hecho, custodia, alimentos), desde Bogotá para todo el país. Atención personalizada.',
     path: '/',
     ld: homeJsonLd(),
     ld2: isProd && config.content.legalReviewDone ? faqJsonLd() : null,
-    main: [hero(), values(), specializedArea(), areas(), profile(), how(), faq(), articlesTeaser(), finalCta()].join('\n'),
+    main: [hero(), facts(), specialtiesSection(), values(), areas(), profile(), how(), faq(), articlesTeaser(), finalCta()].join('\n'),
   });
 }
 
