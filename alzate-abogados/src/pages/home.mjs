@@ -24,7 +24,7 @@ function hero() {
   <div class="container hero__grid">
     <div class="hero__copy">
       <p class="eyebrow eyebrow--light">Álzate - Abogados <span class="sep">|</span> Derecho de familia y civil</p>
-      <h1 id="hero-title">Su caso merece <em>atención jurídica personal</em>.</h1>
+      <h1 id="hero-title">Su caso merece <em>atención jurídica personal PRUEBA</em>.</h1>
       <p class="lead">Asesoría jurídica en asuntos de familia y derecho civil, con una trayectoria profesional consolidada de más de 25 años y un enfoque cercano, directo y personalizado.</p>
       <div class="hero__actions">
         ${waButton({ message: waMessages.hero, label: 'Conversemos sobre su caso', variant: 'light', size: 'lg' })}
