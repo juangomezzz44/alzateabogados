@@ -13,6 +13,7 @@
   --ink:#0A2217;
   --white:#fff;
   --ivory:#F7F5EF;
+  --ivory-dark:#ECEBDE;
   --text:#303630;
   --muted:#58615a;
   --gold:#B5A078;
@@ -34,7 +35,7 @@
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 16px);-webkit-text-size-adjust:100%}
-body{margin:0;font-family:var(--sans);font-size:1.0625rem;line-height:1.65;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;font-family:var(--sans);font-size:1.0625rem;line-height:1.65;color:var(--text);background:var(--ivory);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{max-width:100%;height:auto;display:block}
 h1,h2,h3,h4{font-family:var(--serif);font-weight:600;color:var(--green);line-height:1.1;margin:0 0 .5em;letter-spacing:-.005em;text-wrap:balance}
 h1{font-size:clamp(2.7rem,5.4vw,4.6rem)}
@@ -335,8 +336,22 @@ main:focus{outline:none}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition:none!important}
+  *,*::before,*::after{animation:none!important;transition:none!//Línea corregida para evitar errores de sintaxis
   .js .reveal{opacity:1;transform:none}
   .js .wa-float{transform:none}
 }
 @media print{.site-header,.wa-float,.draft-banner{display:none}}
+
+/* ---------- Ornamentos y Detalles Premium ---------- */
+.ornament{display:block;width:120px;height:2px;background:var(--gold);margin:0 auto 32px;position:relative}
+.ornament::before,.ornament::after{content:"";position:absolute;width:8px;height:8px;background:var(--gold);border-radius:50%;top:-3px}
+.ornament::before{left:0}.ornament::after{right:0}
+
+.section--dark{background:var(--green);color:var(--ivory)}
+.section--dark h2, .section--dark h3{color:#fff}
+.section--dark .section__lead, .section--dark p{color:rgba(247,245,239,.8)}
+.section--dark .eyebrow{color:var(--gold)}
+.section--dark .eyebrow::before{background:var(--gold)}
+.section--dark .btn--outline{border-color:var(--ivory);color:var(--ivory)}
+.section--dark .btn--outline:hover{background:var(--ivory);color:var(--green)}
+
