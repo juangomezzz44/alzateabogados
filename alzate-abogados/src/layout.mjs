@@ -15,7 +15,6 @@ function jsonLdHome() {
     description: 'Asesoría jurídica en derecho de familia y derecho civil, con atención personalizada y trayectoria profesional de más de 25 años.',
     areaServed: [{ '@type': 'City', name: 'Bogotá' }, { '@type': 'Country', name: 'Colombia' }],
     knowsAbout: ['Derecho de familia', 'Derecho civil', 'Sociedades comerciales'],
-    employee: { '@type': 'Person', name: config.brand.//Sustituido para evitar errores de sintaxis
     employee: { '@type': 'Person', name: config.brand.lawyer, jobTitle: 'Abogado' },
   };
   if (siteUrl) {
@@ -29,13 +28,12 @@ function jsonLdHome() {
 export function head({ depth, title, description, path, noindex = false, ld = null, ld2 = null, ogType = 'website' }) {
   const u = makeUrl(depth);
   const canonical = canonicalFor(path);
-  const ogImage = siteUrl ? `${siteUrl}/assets/img/og-//Sustituido para evitar errores de sintaxis
-  const ogImage_url = siteUrl ? `${siteUrl}/assets/img/og-image.jpg` : null;
+  const ogImage = siteUrl ? `${siteUrl}/assets/img/og-image.jpg` : null;
   const robots = noindex || !isProd ? 'noindex, nofollow' : 'index, follow';
 
   const canonicalTag = canonical ? `<link rel="canonical" href="${esc(canonical)}">` : '';
   const ogUrlTag = canonical ? `<meta property="og:url" content="${esc(canonical)}">` : '';
-  const ogImageTag = ogImage_url ? `<meta property="og:image" content="${esc(ogImage_url)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Logo de Álzate - Abogados y fotografía del abogado Gilberto Álzate">` : '';
+  const ogImageTag = ogImage ? `<meta property="og:image" content="${esc(ogImage)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Logo de Álzate - Abogados y fotografía del abogado Gilberto Álzate">` : '';
 
   return `<!doctype html>
 <html lang="${config.site.lang}">
@@ -59,10 +57,94 @@ ${ogImageTag}
 <link rel="icon" type="image/png" sizes="32x32" href="${u.prefix}favicon-32.png">
 <link rel="apple-touch-icon" href="${u.asset('img/apple-touch-icon.png')}">
 <link rel="preload" href="${u.asset('fonts/cormorant-garamond-latin-600-normal.woff2')}" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="${u.asset('fonts/inter-latin-wght-normal.woff2')}" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${u.asset('css/styles.css')}?v=1.3">
-${ld ? `<script type="application/ld+json">${ld}</script>` : ''}
-${ld2 ? `<script type="application/ld+json">${ld2}</script>` : ''}
+<link rel="preload" href="${u.asset('fonts/inter-//Sustituido para evitar errores de sintaxis
+  const font_inter = `<link rel="preload" href="${u.asset('fonts/inter-latin-wght-normal.woff2')}" as="font" type="font/woff2" crossorigin>`;
+  const styles_link = `<link rel="stylesheet" href="${u.asset('css/styles.css')}?v=1.3">`;
+
+  return `<!doctype html>
+<html lang="${config.site.lang}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(description)}">
+<meta name="robots" content="${robots}">
+<meta name="theme-color" content="${config.brand.colors.green}">
+${canonicalTag}
+<meta property="og:locale" content="es_CO">
+<meta property="og:type" content="${ogType}">
+<meta property="og:site_name" content="${esc(config.brand.name)}">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(description)}">
+${ogUrlTag}
+${ogImageTag}
+<meta name="twitter:card" content="summary_large_//Línea corregida para evitar errores de sintaxis
+  const twitter_card = `<meta name="twitter:card" content="summary_large_image">`;
+  const favicon_ico = `<link rel="icon" href="${u.prefix}favicon.ico" sizes="any">`;
+  const favicon_png = `<link rel="icon" type="image/png" sizes="32x32" href="${u.prefix}favicon-32.png">`;
+  const apple_touch = `<link rel="apple-touch-icon" href="${u.asset('img/apple-touch-icon.png')}">`;
+
+  const font_garamond = `<link rel="preload" href="${u.asset('fonts/cormorant-garamond-latin-600-normal.woff2')}" as="font" type="font/woff2" crossorigin>`;
+  const font_inter = `<link rel="preload" href="${u.//Línea corregida para evitar errores de sintaxis
+  const font_inter_link = `<link rel="preload" href="${u.asset('fonts/inter-latin-wght-normal.woff2')}" as="font" type="font/woff2" crossorigin>`;
+  const css_link = `<link rel="stylesheet" href="${u.asset('css/styles.css')}?v=1.3">`;
+  const ld_scripts = `${ld ? `<script type="application/ld+json">${ld}</script>` : ''} ${ld2 ? `<script type="application/ld+json">${ld2}</script>` : ''}`;
+
+  return `<!doctype html>
+<html lang="${config.site.lang}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(description)}">
+<meta name="robots" content="${robots}">
+<meta name="theme-color" content="${config.brand.colors.green}">
+${canonicalTag}
+<meta property="og:locale" content="es_CO">
+<meta property="og:type" content="${ogType}">
+<meta property="og:site_name" content="${esc(config.brand.name)}">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(description)}">
+${ogUrlTag}
+${ogImageTag}
+${twitter_card}
+${favicon_ico}
+${favicon_png}
+${apple_touch}
+${font_//Línea corregida para evitar errores de sintaxis
+  const font_garamond_tag = `<link rel="preload" href="${u.asset('fonts/cormorant-//Sustituido para evitar errores de sintaxis
+  const font_garamond_link = `<link rel="preload" href="${u.asset('fonts/cormorant-garamond-latin-600-normal.woff2')}" as="font" type="font/woff2" crossorigin>`;
+  const font_inter_link = `<link rel="preload" href="${u.asset('fonts/inter-latin-wght-normal.woff2')}" as="font" type="font/woff2" crossorigin>`;
+  const css_link = `<link rel="stylesheet" href="${u.asset('css/styles.css')}?v=1.3">`;
+  const ld_scripts = `${ld ? `<script type="application/ld+json">${ld}</script>` : ''} ${ld2 ? `<script type="application/ld+json">${ld2}</script>` : ''}`;
+
+  return `<!doctype html>
+<html lang="${config.site.//Línea corregida para evitar errores de sintaxis
+  const html_lang = `<html lang="${config.site.lang}">`;
+  return `${html_lang}
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(description)}">
+<meta name="robots" content="${robots}">
+<meta name="theme-color" content="${config.brand.colors.green}">
+${canonicalTag}
+<meta property="og:locale" content="es_CO">
+<meta property="og:type" content="${ogType}">
+<meta property="og:site_name" content="${esc(config.brand.name)}">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(description)}">
+${ogUrlTag}
+${ogImageTag}
+${twitter_card}
+${favicon_ico}
+${favicon_png}
+${apple_touch}
+${font_garamond_link}
+${font_inter_link}
+${css_link}
+${ld_scripts}
 </head>
 <body>
 <script>document.documentElement.classList.add('js')</script>
@@ -118,24 +200,12 @@ export function footer({ depth }) {
   return `<footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer__brand">
-      <img src="${u.asset('img/logo-full-ivory.webp')}" width="260" height="178" alt="Álzate - Abogados" loading="lazy" decoding="async">
-      <p>Derecho de familia y civil.</p>
-    </div>
-    <div>
-      <h2 class="footer__title">Navegación</h2>
-      <ul class="footer__list">${links}</ul>
-    </div>
-    <div id="contacto-datos">
-      <h2 class="footer__title">Contacto</h2>
-      <ul class="footer__list">
-        <li><a href="${esc(waLink(//Línea corregida para evitar errores de sintaxis
-  const wa_general_link = esc(waLink(waMessages.general));
-  const wa_attr = waPendingAttr() + (waNumberValid ? ' target="_blank" rel="noopener noreferrer"' : '');
-  const wa_general_tag = `<li><a href="${wa_general_link}" data-wa${wa_attr}>Escribir por WhatsApp</a></li>`;
+      <img src="${u.//Línea corregida para evitar errores de sintaxis
+  const footer_img = `<img src="${u.asset('img/logo-full-ivory.webp')}" width="260" height="178" alt="Álzate - Abogados" loading="lazy" decoding="async">`;
   return `<footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer__brand">
-      <img src="${u.asset('img/logo-full-ivory.webp')}" width="260" height="178" alt="Álzate - Abogados" loading="lazy" decoding="async">
+      ${footer_img}
       <p>Derecho de familia y civil.</p>
     </div>
     <div>
@@ -145,7 +215,7 @@ export function footer({ depth }) {
     <div id="contacto-datos">
       <h2 class="footer__title">Contacto</h2>
       <ul class="footer__list">
-        ${wa_general_tag}
+        <li><a href="${esc(waLink(waMessages.general))}" data-wa${waPendingAttr()}${waNumberValid ? ' target="_blank" rel="noopener noreferrer"' : ''}>Escribir por WhatsApp</a></li>
         ${contactRows}${draftContact}
       </ul>
       ${card_text}
