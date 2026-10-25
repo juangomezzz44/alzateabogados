@@ -48,9 +48,6 @@ function hero() {
         <div class="arch"><img src="${u.asset('img/gilberto-retrato.webp')}" width="640" height="810" alt="El abogado Gilberto Álzate, de pie junto a la biblioteca de su despacho" fetchpriority="high" decoding="async"></div>
         <figcaption class="hero__chip"><span class="hero__chip-name">${esc(config.brand.lawyer)}</span><span class="hero__chip-role">Abogado · ${config.profile.experience} años de experiencia</span></figcaption>
       </figure>
-      <img class="collage__dot collage__dot--a" src="${u.asset('img/detalle-estatua.webp')}" width="420" height="420" alt="Estatua de la justicia con una balanza" loading="lazy" decoding="async">
-      <img class="collage__dot collage__dot--b" src="${u.asset('img/detalle-balanza.webp')}" width="420" height="420" alt="Balanza y mazo de madera sobre un escritorio" loading="lazy" decoding="async">
-      <span class="collage__icon" aria-hidden="true">${icon('lawyer', { size: 34 })}</span>
     </div>
   </div>
 </section>`;
@@ -73,6 +70,7 @@ function specialtiesSection() {
   return `<section class="section section--tight" id="especialidades" aria-labelledby="esp-title">
   <div class="container">
     <header class="section__head reveal">
+      <img class="dotpic head-dot" src="${u.asset('img/detalle-estatua.webp')}" width="420" height="420" alt="" loading="lazy" decoding="async" aria-hidden="true">
       <h2 id="esp-title">Especialidades destacadas</h2>
       <p class="section__lead">Orientación en dos asuntos del derecho civil que suelen requerir cuidado: los fideicomisos civiles y las sucesiones y herencias.</p>
     </header>
@@ -124,6 +122,7 @@ function areas() {
   return `<section class="section section--tight" id="areas" aria-labelledby="areas-title">
   <div class="container">
     <header class="section__head reveal">
+      <img class="dotpic head-dot" src="${u.asset('img/detalle-balanza.webp')}" width="420" height="420" alt="" loading="lazy" decoding="async" aria-hidden="true">
       <h2 id="areas-title">Áreas de práctica</h2>
       <p class="section__lead">Cada explicación es general e informativa. Para saber cómo aplica a su situación, conversemos.</p>
     </header>
@@ -323,6 +322,7 @@ function articlesTeaser() {
   return `<section class="section section--mint" id="orientacion" aria-labelledby="art-title">
   <div class="container">
     <header class="section__head reveal">
+      <img class="dotpic head-dot" src="${u.asset('img/detalle-estatua.webp')}" width="420" height="420" alt="" loading="lazy" decoding="async" aria-hidden="true">
       <h2 id="art-title">Conozca sus derechos</h2>
       <p class="section__lead">Una sección para comprender conceptos y procedimientos generales. Los artículos se publican después de su revisión jurídica.</p>
     </header>
@@ -342,6 +342,8 @@ function articlesTeaser() {
 function finalCta() {
   return `<section class="cta" id="contacto" aria-labelledby="cta-title">
   <img class="cta__mark" src="${u.asset('img/logo-mark-ivory.webp')}" alt="" width="360" height="275" loading="lazy" decoding="async" aria-hidden="true">
+  <img class="dotpic" src="${u.asset('img/detalle-estatua.webp')}" width="420" height="420" alt="" loading="lazy" decoding="async" aria-hidden="true">
+  <img class="dotpic" src="${u.asset('img/detalle-balanza.webp')}" width="420" height="420" alt="" loading="lazy" decoding="async" aria-hidden="true">
   <div class="container cta__inner reveal">
     <h2 id="cta-title">Cada situación tiene sus particularidades. Hablemos de la suya</h2>
     <p>Cuéntenos qué necesita y explore con Álzate - Abogados las posibilidades de recibir orientación jurídica para su situación.</p>

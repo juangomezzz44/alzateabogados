@@ -11,7 +11,7 @@
 #   Reemplace USUARIO/REPOSITORIO por el repositorio real (ej.: mi-usuario/alzate-abogados).
 backend:
   name: github
-  repo: USUARIO/REPOSITORIO
+  repo: juangomezzz44/alzateabogados
   branch: main
 
 # OPCIÓN B: Decap Turbo (correo y contraseña, sin cuenta de GitHub para editar).
