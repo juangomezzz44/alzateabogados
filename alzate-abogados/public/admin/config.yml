@@ -32,7 +32,7 @@ slug:
   encoding: ascii
   clean_accents: true
   sanitize_replacement: "-"
-media_folder: public/assets/uploads
+media_folder: alzate-abogados/public/assets/uploads
 public_folder: /assets/uploads
 site_url: /
 display_url: /
@@ -43,7 +43,7 @@ collections:
   - name: articulos
     label: Artículos jurídicos
     label_singular: Artículo
-    folder: content/articulos
+    folder: alzate-abogados/content/articulos
     extension: md
     format: frontmatter
     create: true
@@ -101,7 +101,7 @@ collections:
     files:
       - name: contacto
         label: Contacto, perfil y datos legales
-        file: content/settings.json
+        file: alzate-abogados/content/settings.json
         format: json
         fields:
           - label: Contacto
@@ -149,7 +149,7 @@ collections:
 
       - name: servicios
         label: Servicios
-        file: content/servicios.json
+        file: alzate-abogados/content/servicios.json
         format: json
         fields:
           - label: Especialidades destacadas (aparecen en la primera pantalla)
@@ -199,7 +199,7 @@ collections:
 
       - name: faq
         label: Preguntas frecuentes
-        file: content/faq.json
+        file: alzate-abogados/content/faq.json
         format: json
         fields:
           - label: Preguntas
