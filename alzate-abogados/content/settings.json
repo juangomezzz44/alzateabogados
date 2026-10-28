@@ -1,29 +1,29 @@
 {
   "contact": {
     "whatsappNumber": "573168303567",
-    "email": "",
+    "email": "gilbertoalzate@hotmail.com",
     "city": "Bogotá, Colombia",
     "coverage": "Atención desde Bogotá para todo el país",
-    "address": "",
-    "hours": "",
-    "modality": ""
+    "address": "Cra. 13 # 116-46 oficina 203 Bogotá",
+    "hours": "8 a.m. a 12M-2p.m. a 5p.m.",
+    "modality": "Hibrida (presencial y virtual)"
   },
   "profile": {
     "experience": "+25",
     "bio": "",
-    "professionalCard": "",
+    "professionalCard": "T.P. # 77.465 del C.S. de la J.",
     "showCredentialsFromPhoto": true
   },
   "privacy": {
     "responsible": "Gilberto Álzate (Álzate - Abogados)",
     "contactChannel": "gilbertoalzate@hotmail.com",
     "lastUpdated": "12 de octubre de 2026",
-    "validatedByLawyer": false
+    "validatedByLawyer": true
   },
   "site": {
     "url": ""
   },
   "content": {
-    "legalReviewDone": false
+    "legalReviewDone": true
   }
 }
