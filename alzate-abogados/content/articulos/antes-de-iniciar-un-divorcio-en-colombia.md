@@ -2,7 +2,7 @@
 title: Qué tener en cuenta antes de iniciar un divorcio en Colombia
 description: "Conozca los tipos de divorcio en Colombia: mutuo acuerdo,
   unilateral y por causales, sus requisitos y efectos sobre hijos y bienes."
-date: null
+date: 2026-10-28
 published: true
 comingSoon: false
 topic: un divorcio
